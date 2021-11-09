@@ -96,6 +96,11 @@ const Projects = () => {
               image_url="https://res.cloudinary.com/daeq8bixw/image/upload/v1620460534/belizing_payments_bdb861e244.png"
               project_link="hhttps://payments.belizing.com/" />
             <Project 
+              name="React Firestore Shopping Cart" 
+              tags="#React #CloudFunctions #firestore" 
+              image_url="https://res.cloudinary.com/daeq8bixw/image/upload/v1623945259/Screenshot_2021_06_17_at_23_54_09_4b9ce0c97b.png"
+              project_link="https://lmanzanero.github.io/firebase-react-store/" />
+            <Project 
               name="JavaScript Realtime Quiz" 
               tags="#JavaScript #Node.js #Socket.io" 
               image_url="https://res.cloudinary.com/daeq8bixw/image/upload/v1622399771/Screenshot_2021_05_28_at_01_11_53_d46b1e8513.png"

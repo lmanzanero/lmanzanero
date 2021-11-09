@@ -1,6 +1,6 @@
 module.exports = { 
   siteMetadata: {
-    siteUrl: `https://lmanzanero.com/`,
+    siteUrl: `https://luismanzanero.com/`,
     title: `Luis Manzanero`,
     description: `Hello, I am Luis Manzanero - An aspiring environmental scientist, full stack web developer, and innovator`,
     author: `@gatsbyjs`,
@@ -79,7 +79,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Luis Manzanero`,
-        short_name: `lmanzanero.com`,
+        short_name: `luismanzanero.com`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
