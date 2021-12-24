@@ -486,8 +486,9 @@ button:focus {
   color: #576e75;
 }
 
-.resume-content .resume-techs {
-  color:#35535c; 
+.resume-content .resume-techs, a {
+  color:darkcyan; 
+  font-weight: bold;
   line-height: 2rem;
   font-family: monospace;
 }
