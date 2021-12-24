@@ -49,6 +49,7 @@ const Projects = () => {
                   <li><span className="option" onClick={onClickItem}>JavaScript</span></li>
                   <li><span className="option" onClick={onClickItem}>React</span></li>
                   <li><span className="option" onClick={onClickItem}>Vue</span></li>
+                  <li><span className="option" onClick={onClickItem}>Svelte</span></li>
                   <li><span className="option" onClick={onClickItem}>Node.js</span></li>
                   <li><span className="option" onClick={onClickItem}>Flutter/Dart</span></li>    
                   <li><span className="option" onClick={onClickItem}>Kotlin</span></li> 
@@ -60,6 +61,11 @@ const Projects = () => {
                 <Project project={project} tag={tag} />
               ))
             } */}
+            <Project 
+              name="ESL Real Time Games" 
+              tags="#JavaScript #Svelte" 
+              image_url="https://esl-games.vercel.app/esl-social.jpg"
+              project_link="https://esl-games.vercel.app/" />
             <Project 
               name="Gift Cards Belize" 
               tags="#React" 
