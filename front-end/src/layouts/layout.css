@@ -758,8 +758,9 @@ button:focus {
 .page-categories ul { 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: center; 
+  gap: 1em;
+  overflow: scroll;
   list-style-type: none; 
 }
 
