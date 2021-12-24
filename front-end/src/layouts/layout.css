@@ -64,9 +64,10 @@ body::-webkit-scrollbar-thumb {
 .modal-content {
   position: relative;
   background-color: #fefefe;
+  border: 3px solid var(--bg-primary);
+  border-radius: 00.4em;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
+  padding: 20px; 
   width: 60%;
   overflow: scroll;
 }
@@ -478,12 +479,14 @@ button:focus {
 
 .resume-content .resume-title {
   font-size: 1.8rem;
+  color: darkcyan; 
 }
 
 .resume-content .resume-date {
   font-size: 1rem;
   line-height: 1.9rem;
-  color: #576e75;
+  color: #2e6e81;
+  font-style: italic;
 }
 
 .resume-content .resume-techs, a {
@@ -495,8 +498,8 @@ button:focus {
 
 .resume-content .resume-desc {
   font-size: 1rem;
-  line-height: 1.9rem;
-  color: var(--dark-color-a);
+  line-height: 1.95rem; 
+  color: rgb(76, 97, 97);
 }
 
 .resume-content .resume-desc a {
@@ -1377,8 +1380,7 @@ button:focus {
     background-color: #ffffff;
     margin: auto;
     padding: 20px;
-    border-radius: 0.2em;
-    border: 1px solid #888;
+    border-radius: 0.2em; 
     width: 90%;
     height: 75vh;
   }
