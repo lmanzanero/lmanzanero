@@ -11,7 +11,8 @@ const Resume = () =>{
     title: 'title',
     date: 'date',
     techs: '',
-    desc: 'desc'
+    desc: 'desc',
+    siteLink: '#'
   }
   const [ isCartModalOpen, setCartModalOpen ] = useState(false);
   const [ resumeContent, setResumeContent ] = useState(initalResumeContent);
@@ -31,6 +32,7 @@ const Resume = () =>{
                 date={resumeContent.date}
                 techs={resumeContent.techs}
                 desc={resumeContent.desc}
+                siteLink={resumeContent.siteLink}
               />
           </Modal>
           <h1 className="title">Resume</h1> 
@@ -39,7 +41,7 @@ const Resume = () =>{
           <li>
               <div className="direction-r">
                 <div className="flag-wrapper">
-                  <span className="flag">Oblip</span>
+                  <span className="flag">Nebulacore.tech</span>
                   <span className="time-wrapper"><span className="time">2018 - present</span></span>
                 </div>
                 <div className="desc">Full stack developer & Mobile Developer!
@@ -47,10 +49,11 @@ const Resume = () =>{
                    <span className="more" onClick={() => {
                      setCartModalOpen(true)
                      setResumeContent({
-                      title: 'Oblip.com',
+                      title: 'Nebula Core Technologies',
                       date: '2018-present',
                       techs: '#Javascript/TypeScript #Vue.js #React-Native #flutter #dart',
-                      desc: '<p>Reggie Escobar, who founded a crypto currency base application through his graduate studies in Taiwan, contacted me to assist in the development of applications needed in order to launch his startup. Since joining Oblip. Inc, I became the lead android developer for the company\'s main payment project and worked with various web technologies. With Oblip. Inc, I have created Oblip.com, Oblip.me, and Oblip mobile app using various programming languages and frameworks.</p>'
+                      desc: '<p>I\'m part of a team of international entrepreneurs and engineers building the technologies of tomorrow.</p>',
+                      siteLink: "https://nebulacore.tech/"
                      })
                     }}>learn more</span>
                 </div> 
@@ -70,8 +73,9 @@ const Resume = () =>{
                       title: 'Gift Cards Belize',
                       date: '2020-present',
                       techs: '#Javascript/TypeScript #Vue.js #Node.js #Websockets',
-                      desc: '<p>Gift Cards Belize is an ecommerce website that allows Belizeans to purchase gift cards easily, at any time of the day without a credit card. At Gift Cards Belize, I built the front end portion of the website from mocks ups using various web technologies, and currently building features to integrate with other payments methods. </p>'
-                     })
+                      desc: '<p>Gift Cards Belize is an ecommerce website that allows Belizeans to purchase gift cards easily, at any time of the day without a credit card. At Gift Cards Belize, I built the front end portion of the website from mocks ups using various web technologies, and currently building features to integrate with other payments methods. </p>',
+                      siteLink: 'https://giftcards.bz/'
+                    })
                     }}>learn more</span>
                 </div> 
               </div>
@@ -90,7 +94,8 @@ const Resume = () =>{
                       title: 'EcoCrypt.org',
                       date: '2018 - present',
                       techs: '#Javascript/TypeScript #Node.js #React #Next.js #flutter #dart',
-                      desc: 'While at Galen University, for my final project, I developed the idea of creating a social network to enforce environmental laws. The main functionality, granting users to report any illegal activity that might breach our environmental laws, in the hopes that authorities can act upon as soon as possible with concrete evidence. This is still an ongoing project which I have opened sourced, and plan to work on as a hobby or use to further my studies.'
+                      desc: 'While at Galen University, for my final project, I developed the idea of creating a social network to enforce environmental laws. The main functionality, granting users to report any illegal activity that might breach our environmental laws, in the hopes that authorities can act upon as soon as possible with concrete evidence. This is still an ongoing project which I have opened sourced, and plan to work on as a hobby or use to further my studies.',
+                      siteLink: 'https://ecocrypt.org/'
                      })
                   }}>learn more</span></div>  
               </div>
@@ -109,7 +114,8 @@ const Resume = () =>{
                        title: 'Belizing.com',
                        date: '2018 - 2020',
                        techs: '#kotlin #AndroidStudio #Javascript #Node.js - Alexa Skills Kit',
-                       desc: 'While on my last semester at Galen University, I started to work at GoBelizing L.T.D as a software engineer. GoBelizing has grown to be the largest online platform and marketplace for tours and activities in Belize, and is constantly evolving in new ways to meet the demands of online exposure. I eventually created an android app called Belizing Payments, which extended their existing platform to meet android users to accept payments on demand with their phones. Also, I did videos and edited podcast episodes to complement the company’s ever evolving platform. All the videos I have edited can be found on their Youtube Channel.'
+                       desc: 'While on my last semester at Galen University, I started to work at GoBelizing L.T.D as a software engineer. GoBelizing has grown to be the largest online platform and marketplace for tours and activities in Belize, and is constantly evolving in new ways to meet the demands of online exposure. I eventually created an android app called Belizing Payments, which extended their existing platform to meet android users to accept payments on demand with their phones. Also, I did videos and edited podcast episodes to complement the company’s ever evolving platform. All the videos I have edited can be found on their Youtube Channel.',
+                       siteLink: 'https://belizing.com/'
                       })
                    }}>learn more</span>
                 </div> 
