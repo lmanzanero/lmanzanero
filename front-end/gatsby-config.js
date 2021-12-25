@@ -7,13 +7,22 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-cname',
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://luismanzanero.com/',
+        sitemap: 'https://luismanzanero.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
     {
       resolve: `gatsby-plugin-sitemap`,
       options: { 
         // Exclude specific pages or groups of pages using glob parameters
         // See: https://github.com/isaacs/minimatch
         // The example below will exclude the single `path/to/page` and all routes beginning with `category`
-        exclude: [`/category/*`],
+        exclude: [`/category/*`, '/app/*'],
         query: `
           {
             site {
