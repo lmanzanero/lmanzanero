@@ -11,7 +11,7 @@ const Header = ({ siteTitle }) => (
 					</Link>
 				</li>
 				<li className="nav-item">
-					<Link to="/" className="nav-link">
+					<Link to="/" className="nav-link" activeClassName="active">
 					<svg
 							aria-hidden="true"
 							focusable="false"
@@ -39,7 +39,7 @@ const Header = ({ siteTitle }) => (
 					</Link>
 				</li>
 				<li className="nav-item">
-					<Link to="/about" className="nav-link">
+					<Link to="/about" className="nav-link" activeClassName="active">
 					<svg 
 					  id="Layer_1" 
 						data-name="Layer 1" 
@@ -52,14 +52,14 @@ const Header = ({ siteTitle }) => (
 				</li>
 	
 				<li className="nav-item">
-					<Link to="/resume" className="nav-link">
+					<Link to="/resume" className="nav-link" activeClassName="active">
 					<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><defs><style></style></defs><title>b</title><path 	fill="currentColor" className="fa-secondary" d="M107.85862,1.9495h-65.678A4.582,4.582,0,0,0,38.91975,3.301L13.20025,29.02062a4.57286,4.57286,0,0,0-1.35156,3.26074v85.474a8.30572,8.30572,0,0,0,8.29766,8.29511h87.71227a8.30306,8.30306,0,0,0,8.29268-8.29511V10.24716A8.30532,8.30532,0,0,0,107.85862,1.9495Zm-.932,86.46872v28.41023H21.07336V36.89373H38.49775a8.3037,8.3037,0,0,0,8.29517-8.29523V11.17416h60.13372Z"/><path fill="currentColor" className="fa-secondary" d="M64.82067,103.63479H37.31734a2.15847,2.15847,0,1,0,0,4.31694H64.82067a2.15847,2.15847,0,1,0,0-4.31694Z"/><path fill="currentColor" className="fa-secondary" d="M35.15887,94.235a2.163,2.163,0,0,0,2.15847,2.15853H90.68272a2.15853,2.15853,0,0,0,0-4.31706H37.31734A2.15649,2.15649,0,0,0,35.15887,94.235Z"/><path fill="currentColor" className="fa-secondary" d="M45.33184,53.8263l1.02881,5.30307a6.73963,6.73963,0,0,0,13.23125,0l1.02881-5.30307a7.09933,7.09933,0,0,0-7.03341-8.056H52.36525A7.09933,7.09933,0,0,0,45.33184,53.8263Z"/><path 	fill="currentColor" className="fa-secondary" d="M52.97631,73.53253l-6.89219-6.89219-7.18288,2.55109a2.002,2.002,0,0,0-1.28842,1.47043l-2.454,11.549H70.79369l-2.454-11.549a2.00193,2.00193,0,0,0-1.28842-1.47043l-7.18288-2.55109Z"/></svg>
 						<span className="link-text">Resume</span>
 					</Link>
 				</li>
 	
 				<li className="nav-item">
-					<Link to="/projects" className="nav-link">
+					<Link to="/projects" className="nav-link" activeClassName="active">
 					<svg
 							aria-hidden="true"
 							focusable="false"
@@ -88,7 +88,7 @@ const Header = ({ siteTitle }) => (
 				</li>
 	
 				<li className="nav-item">
-					<Link to="/blog" className="nav-link">
+					<Link to="/blog" className="nav-link" activeClassName="active">
 						<svg 
 								xmlns="http://www.w3.org/2000/svg" 
 						    viewBox="0 0 64 64" 
