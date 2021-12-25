@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://luismanzanero.com/sitemap.xml
+Host: https://luismanzanero.com
