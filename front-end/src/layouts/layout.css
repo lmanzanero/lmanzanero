@@ -174,10 +174,10 @@ body::-webkit-scrollbar-thumb {
   filter: grayscale(0%) opacity(1);
   background: var(--bg-secondary);
   color: var(--text-secondary);
-} 
+}  
 
-.nav-link .active {
-  color: palegreen;
+.nav-link.active {
+  filter: grayscale(0%) opacity(1);
 }
 
 .link-text {
