@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 const Post = ({ article }) => { 
   console.log(article)
   return (
-    <Link to={`/blog/${article.node.slug}`}>
+    <Link to={`/blog/${article.node.slug}/`}>
       <div className="blog-post">
           <div className="image">
               <Img fluid={article.node.image.childImageSharp.fluid} style={{ height: '100%', objectFit: 'cover',}}/>
