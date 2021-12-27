@@ -100,7 +100,7 @@ const Projects = () => {
               name="Belizing Payments - Android" 
               tags="#Kotlin" 
               image_url="https://res.cloudinary.com/daeq8bixw/image/upload/v1620460534/belizing_payments_bdb861e244.png"
-              project_link="hhttps://payments.belizing.com/" />
+              project_link="https://payments.belizing.com/" />
             <Project 
               name="React Firestore Shopping Cart" 
               tags="#React #CloudFunctions #firestore" 
