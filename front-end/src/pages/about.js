@@ -1,6 +1,7 @@
 import React from "react" 
 import Layout from "../layouts/layout" 
 import SEO from "../components/seo" 
+import { Link } from "gatsby"
 
 const About = () => (
   <Layout> 
@@ -15,8 +16,8 @@ const About = () => (
               <p> 
                 Hello! I am Luis Manzanero - An Aspiring environmental scientist and experienced full stack web and mobile developer. I am from the world most beautiful country, Belize!
                 Growing up in the jungles of Belize, it is no surprise that the environment plays a major role in my life. I am always trying to learn new things and apply 
-                what I learn with the things that make me happy and this world more sustainable. Recently, I have been involved in various <a href="/projects">projects </a> related to blockchain, web and mobile development. My curiosty and drive to learn
-                has brought many <a href="/resume">opportunities</a>, which has cultivated a hollistic approach to save the environment and improve our lives through innovations with technology. I also enjoy writing about various topics which you can read on my <a href="/blog">blog</a>.
+                what I learn with the things that make me happy and this world more sustainable. Recently, I have been involved in various <Link to="/projects/">projects </Link> related to blockchain, web and mobile development. My curiosty and drive to learn
+                has brought many <Link to="/resume/">opportunities</Link>, which has cultivated a hollistic approach to save the environment and improve our lives through innovations with technology. I also enjoy writing about various topics which you can read on my <Link to="/blog/">blog</Link>.
               </p>
               <br/>
               <span>I'd love to explore ways we can collaborate on a project!</span>
