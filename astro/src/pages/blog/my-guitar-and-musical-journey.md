@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "Second post"
+title: "My guitar and musical journey"
 description: "I played every single day for an entire year, never knowing what I was doing, but the physical instrument had filled a void in my dreams."
 pubDate: "Jul 22 2022"
 heroImage: "/placeholder-hero.jpg"
