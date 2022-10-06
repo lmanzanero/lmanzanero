@@ -21,19 +21,23 @@ const {
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
-    <style>
-      main {
-        margin: 0;
-        max-width: 100%;
-      }
-    </style>
   </head>
 
   <body>
     <Header />
     <main>
       <article>
-        {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+        <div id="banner">
+          {
+            heroImage && (
+              <img
+                style="width: 100%; height: 70vh; object-fit: cover;"
+                src={heroImage}
+                alt=""
+              />
+            )
+          }
+        </div>
         <h1 class="title">{title}</h1>
         {pubDate && <time>{pubDate}</time>}
         {
@@ -44,7 +48,11 @@ const {
           )
         }
         <hr />
-        <slot />
+        <div class="markdown">
+          <div class="markdown-container">
+            <slot />
+          </div>
+        </div>
       </article>
     </main>
     <!-- <Footer /> -->
