@@ -300,14 +300,14 @@ a {
 }
 /* page layout */
 
-.page {
+main {
   position: relative;  
   height: 100%;   
   margin-left: 260px; 
   margin-right: 0;
 }
 
-.page .markdown-container {
+main .markdown-container {
   font-size: 1.2em;
   font-family: monospace;
   line-height: 1.6em; 
@@ -316,7 +316,7 @@ a {
   padding: 1em 6em; 
 }
 
-.page .markdown-container p {
+main .markdown-container p {
   margin: 1.3em auto;
 }
 
@@ -338,19 +338,19 @@ a {
   object-fit: cover;
 }
 
-.page iframe {
+main iframe {
   display: flex;
   text-align: center;
   margin: 1em auto;
 }
 
-.page section { 
+main section { 
   min-height: 100vh;
   width: 100%;
   text-align: center;
 }
 
-.page .title { 
+main .title { 
   color: var(--text-primary); 
   width:fit-content;
   background-color:rgba(0, 0, 0, 0.5);
@@ -360,7 +360,7 @@ a {
   padding: 0.4em; 
 }
 
-.page .sub-title {
+main .sub-title {
   color: var(--light-color);
   font-style: italic;
   font-family: monospace;
@@ -750,7 +750,7 @@ button:focus {
 }
 
 /* Projects Page */ 
-.page-categories { 
+main-categories { 
   position: sticky;
   background-color: var(--dark-color-a);
   top: 0;
@@ -759,7 +759,7 @@ button:focus {
   text-align: center;
 }
 
-.page-categories ul { 
+main-categories ul { 
   display: flex;
   flex-direction: row;
   justify-content: center; 
@@ -768,7 +768,7 @@ button:focus {
   list-style-type: none; 
 }
 
-.page-categories ul li {  
+main-categories ul li {  
   margin: 5px auto;
   font-size: 0.9rem; 
   padding: 0.7em 0.5em; 
@@ -779,16 +779,16 @@ button:focus {
 }
 
 
-.page-categories ul li span { 
+main-categories ul li span { 
   color: var(--text-secondary);
 }
 
-.page-categories ul li span:hover {
+main-categories ul li span:hover {
   color: palegreen;
   transition: all 0.5s;
 }
 
-.page-categories ul li .active {   
+main-categories ul li .active {   
   color: palegreen;    
   border-radius: 0.3em;
   font-weight: 700;
@@ -1195,20 +1195,20 @@ button:focus {
     display: none;
   }
 
-  .page {
+  main {
     margin: 0;
     padding: 0;
     padding: auto; 
     width: 100%; 
   }
 
-  .page .markdown-container {
+  main .markdown-container {
     padding: 1em 1em;
     padding-bottom: 5em;
     font-size: 1rem;
   }
 
-  .page .markdown-container figure{
+  main .markdown-container figure{
     width: 100%;
   }
 
@@ -1313,13 +1313,13 @@ button:focus {
     margin: 0.6em;
   }
 
-  .page .about-header { 
+  main .about-header { 
     font-weight: bold;
     font-size: 0.8em; 
     font-size: 3.5vw;
   }
 
-  .page .main-text p {
+  main .main-text p {
     font-size: 0.8em;
     padding: 1em;
   }
@@ -1344,7 +1344,7 @@ button:focus {
   }
 
 
-  .page section {
+  main section {
     height: auto;
   }
   
