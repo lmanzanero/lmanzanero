@@ -1,7 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 ---
 
@@ -13,8 +12,100 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
   <body>
     <Header />
     <main>
-      <h1>🧑‍🚀 resume!</h1>
+      <h1 class="title">Resume</h1>
+      <h4 class="sub-title">A timeline of where I have worked.</h4>
+      <ul class="timeline">
+        <li>
+          <div class="direction-r">
+            <div class="flag-wrapper">
+              <span class="flag">Nebulacore.tech</span>
+              <span class="time-wrapper"
+                ><span class="time">2018 - present</span>
+              </span>
+            </div>
+            <div class="desc">
+              Full stack developer & Mobile Developer!
+              <br />
+              <span class="more">learn more</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="direction-l">
+            <div class="flag-wrapper">
+              <span class="flag">Gift Cards Belize</span>
+              <span class="time-wrapper"
+                ><span class="time">2020 - present</span>
+              </span>
+            </div>
+            <div class="desc">
+              Front-end Web developer
+              <br />
+              <span class="more">learn more</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="direction-r">
+            <div class="flag-wrapper">
+              <span class="flag">EcoCrypt.org</span>
+              <span class="time-wrapper"
+                ><span class="time">2018 - present</span>
+              </span>
+            </div>
+            <div class="desc">
+              Full Stack Web Developer
+              <br />
+              <span class="more">learn more</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="direction-l">
+            <div class="flag-wrapper">
+              <span class="flag">Belizing.com</span>
+              <span class="time-wrapper"
+                ><span class="time">2018 - 2020</span>
+              </span>
+            </div>
+            <div class="desc">
+              Content Creator & Android Developer
+              <br />
+              <span class="more">learn more</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="direction-r">
+            <div class="flag-wrapper">
+              <span class="flag">Galen University</span>
+              <span class="time-wrapper"
+                ><span class="time">2016 - 2018</span>
+              </span>
+            </div>
+            <div class="desc">
+              Web Developer and content creator
+              <br />
+              <span class="more">learn more</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="direction-l">
+            <div class="flag-wrapper">
+              <span class="flag">DegaSolutions Inc.</span>
+              <span class="time-wrapper"
+                ><span class="time">2015 - 2016</span>
+              </span>
+            </div>
+            <div class="desc">
+              Front-end Web & Wordpress Developer
+              <br />
+              <span class="more">learn more</span>
+            </div>
+          </div>
+        </li>
+      </ul>
     </main>
-    <Footer />
   </body>
 </html>
