@@ -36,6 +36,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
               )}
               excerpt={post.frontmatter.description}
               tags="story"
+              imageUrl={post.frontmatter.heroImage}
               url={post.url}
             />
           ))

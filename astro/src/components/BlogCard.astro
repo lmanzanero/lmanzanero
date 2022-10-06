@@ -5,18 +5,17 @@ export interface Props {
   excerpt: string;
   date: string;
   url: string;
+  imageUrl: string;
 }
 
-const { tags, title, excerpt, date, url } = Astro.props;
+const { tags, title, excerpt, date, url, imageUrl } = Astro.props;
 console.log({ url });
 ---
 
 <a href={url}>
   <div class="blog-post">
     <div class="image">
-      <img
-        src="https://luismanzanero.com/static/304b33f4d596c59c07458e50374185bc/aed41/e0e2fb1760aca2deadde1258a3ac6ec3.jpg"
-      />
+      <img src={imageUrl} />
     </div>
     <div class="blog-info">
       <div class="category">#<span>{tags}</span></div>
