@@ -1,0 +1,30 @@
+---
+import "./blog-card.css";
+
+export interface Props {
+  tags: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  url: string;
+  imageUrl: string;
+}
+
+const { tags, title, excerpt, date, url, imageUrl } = Astro.props;
+console.log({ url });
+---
+
+<a href={url}>
+  <div class="blog-post">
+    <div class="image">
+      <img src={imageUrl} />
+    </div>
+    <div class="blog-info">
+      <div class="category">#<span>{tags}</span></div>
+      <div class="blog-title"><h2>{title}</h2></div>
+      <div class="exerpt">{excerpt}</div>
+      <div class="author">Luis Manzanero</div>
+      <div class="published-date">{date}</div>
+    </div>
+  </div>
+</a>
