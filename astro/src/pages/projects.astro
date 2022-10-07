@@ -113,5 +113,26 @@ import Project from "../components/Project.astro";
       </div>
     </main>
     <Footer />
+    <script>
+      let tag = "all";
+      const projectItems = document.querySelectorAll(".project-item .category");
+      if (tag != "all") {
+        projectItems.forEach((item, index) => {
+          //ensure all items are populated again before filtering
+          document.querySelectorAll(".project-item")[index].style.display =
+            "block";
+          //filter times if category is included in innerHTML string
+          if (!item.innerHTML.toLowerCase().includes(tag.toLowerCase())) {
+            document.querySelectorAll(".project-item")[index].style.display =
+              "none";
+          }
+        });
+      } else {
+        //ensures to populate page if all is selected
+        document
+          .querySelectorAll(".project-item")
+          .forEach((item) => (item.style.display = "block"));
+      }
+    </script>
   </body>
 </html>
