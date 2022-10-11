@@ -1,0 +1,23 @@
+---
+import "./project-card.css";
+
+export interface Props {
+  name: string;
+  image_url: string;
+  tags: string;
+  project_link: string;
+}
+
+const { name, image_url, tags, project_link } = Astro.props;
+---
+
+<div class="project-item">
+  <img alt="" src={image_url} />
+  <div class="project-inner">
+    <div class="project-title">{name}</div>
+    <div class="category">{tags}</div>
+    <div class="links">
+      <a href={project_link} target="_blank" rel="noreferrer">Live Link</a>
+    </div>
+  </div>
+</div>
