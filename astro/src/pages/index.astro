@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import Home from "../components/Home/Home.astro";
 ---
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
   <body>
     <Header title={SITE_TITLE} />
     <main>
-      <h1>🧑‍🚀 Hello, I'm Luis!</h1>
+      <Home />
     </main>
   </body>
 </html>
