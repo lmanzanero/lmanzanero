@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
+import Modal from "../components/Modals/Modal.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 ---
 
@@ -11,6 +12,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
   </head>
   <body>
     <Header />
+    <Modal isOpen={false} />
     <main>
       <h1 class="title">Resume</h1>
       <h4 class="sub-title">A timeline of where I have worked.</h4>
@@ -107,5 +109,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
         </li>
       </ul>
     </main>
+    <script>
+      const resumeElements = document.querySelectorAll(".more") as NodeList;
+      const modal = document.querySelector(".modal") as HTMLElement;
+      resumeElements.forEach((item) => {
+        item.addEventListener("click", () => {
+          modal.style.display = "block";
+        });
+      });
+    </script>
   </body>
 </html>
