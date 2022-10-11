@@ -1,7 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
-import Modal from "../components/Modals/Modal.astro";
+import ResumeItem from "../components/Resume/ResumeItem.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 ---
 
@@ -12,101 +12,31 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
   </head>
   <body>
     <Header />
-    <Modal isOpen={false} />
+
     <main>
       <h1 class="title">Resume</h1>
       <h4 class="sub-title">A timeline of where I have worked.</h4>
       <ul class="timeline">
-        <li>
-          <div class="direction-r">
-            <div class="flag-wrapper">
-              <span class="flag">Nebulacore.tech</span>
-              <span class="time-wrapper"
-                ><span class="time">2018 - present</span>
-              </span>
-            </div>
-            <div class="desc">
-              Full stack developer & Mobile Developer!
-              <br />
-              <span class="more">learn more</span>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="direction-l">
-            <div class="flag-wrapper">
-              <span class="flag">Gift Cards Belize</span>
-              <span class="time-wrapper"
-                ><span class="time">2020 - present</span>
-              </span>
-            </div>
-            <div class="desc">
-              Front-end Web developer
-              <br />
-              <span class="more">learn more</span>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="direction-r">
-            <div class="flag-wrapper">
-              <span class="flag">EcoCrypt.org</span>
-              <span class="time-wrapper"
-                ><span class="time">2018 - present</span>
-              </span>
-            </div>
-            <div class="desc">
-              Full Stack Web Developer
-              <br />
-              <span class="more">learn more</span>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="direction-l">
-            <div class="flag-wrapper">
-              <span class="flag">Belizing.com</span>
-              <span class="time-wrapper"
-                ><span class="time">2018 - 2020</span>
-              </span>
-            </div>
-            <div class="desc">
-              Content Creator & Android Developer
-              <br />
-              <span class="more">learn more</span>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="direction-r">
-            <div class="flag-wrapper">
-              <span class="flag">Galen University</span>
-              <span class="time-wrapper"
-                ><span class="time">2016 - 2018</span>
-              </span>
-            </div>
-            <div class="desc">
-              Web Developer and content creator
-              <br />
-              <span class="more">learn more</span>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="direction-l">
-            <div class="flag-wrapper">
-              <span class="flag">DegaSolutions Inc.</span>
-              <span class="time-wrapper"
-                ><span class="time">2015 - 2016</span>
-              </span>
-            </div>
-            <div class="desc">
-              Front-end Web & Wordpress Developer
-              <br />
-              <span class="more">learn more</span>
-            </div>
-          </div>
-        </li>
+        <ResumeItem
+          company="Nebula Core Technologies"
+          companyDomain="Nebulacore.tech"
+          startYear="2020"
+          isLeft={false}
+          role="Full stack developer & Mobile Developer!"
+          techStack={["test", "story"]}
+          details="I'm part of a team of international entrepreneurs and engineers building the technologies of tomorrow."
+          siteLink="sdfsdfsdf"
+        />
+        <ResumeItem
+          company="Gift Cards Belize"
+          companyDomain="GiftCards.bz"
+          startYear="2020"
+          isLeft={true}
+          role="Front-end Web developer"
+          techStack={["#Javascript/TypeScript", "#Vue.js"]}
+          details="Gift Cards Belize is an ecommerce website that allows Belizeans to purchase gift cards easily, at any time of the day without a credit card. At Gift Cards Belize, I built the front end portion of the website from mocks ups using various web technologies, and currently building features to integrate with other payments methods."
+          siteLink="sdfsdfsdf"
+        />
       </ul>
     </main>
     <script>
