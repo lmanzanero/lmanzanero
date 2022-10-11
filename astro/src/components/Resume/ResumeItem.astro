@@ -1,0 +1,64 @@
+---
+import Modal from "../Modals/Modal.astro";
+
+export interface Props {
+  company: string;
+  companyDomain: string;
+  startYear: string;
+  endYear?: string;
+  role: string;
+  techStack: string[];
+  details: string;
+  siteLink: string;
+  isLeft: boolean;
+}
+
+const {
+  company,
+  companyDomain,
+  startYear,
+  endYear = "Present",
+  role,
+  techStack,
+  details,
+  siteLink,
+  isLeft,
+} = Astro.props;
+---
+
+<li>
+  <Modal client:load>
+    <div class="resume-content">
+      <div class="resume-title">{company}</div>
+      <div class="resume-date">{startYear} - {endYear}</div>
+      <div class="resume-techs">{techStack}</div>
+      <div class="resume-desc">{details}</div>
+      <br />
+      {
+        siteLink ? (
+          <a href={`${siteLink}`} target="_blank">
+            Learn More
+          </a>
+        ) : (
+          ""
+        )
+      }
+    </div>
+  </Modal>
+  <div class={`${isLeft ? "direction-r" : "direction-l"}`}>
+    <div class="flag-wrapper">
+      <span class="flag">{companyDomain}</span>
+      <span class="time-wrapper"
+        ><span class="time">{startYear} - {endYear}</span>
+      </span>
+    </div>
+    <div class="desc">
+      {role}
+      <br />
+      <span class="more">learn more</span>
+    </div>
+  </div>
+</li>
+<script>
+  (document.querySelector(".resume-title") as HTMLElement).innerText = "HEllo";
+</script>
