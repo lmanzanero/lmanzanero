@@ -3,14 +3,62 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
-import Project from "../components/Project.astro";
+import Project from "../components/ProjectCard/Project.astro";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      /* Projects Page */
+      .page-categories {
+        position: sticky;
+        background-color: var(--dark-color-a);
+        top: 0;
+        padding: 1em;
+        z-index: 1;
+        text-align: center;
+      }
+
+      .page-categories ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1em;
+        overflow: scroll;
+        list-style-type: none;
+      }
+
+      .page-categories ul li {
+        margin: 5px auto;
+        font-size: 0.9rem;
+        padding: 0.7em 0.5em;
+        color: var(--text-secondary);
+        background-color: var(--dark-color-b);
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .page-categories ul li span {
+        color: var(--text-secondary);
+      }
+
+      .page-categories ul li span:hover {
+        color: palegreen;
+        transition: all 0.5s;
+      }
+
+      .page-categories ul li .active {
+        color: palegreen;
+        border-radius: 0.3em;
+        font-weight: 700;
+        padding: 0.2em;
+        transition: all 0.5s;
+      }
+    </style>
   </head>
+
   <body>
     <Header />
     <main>
@@ -113,26 +161,5 @@ import Project from "../components/Project.astro";
       </div>
     </main>
     <Footer />
-    <script>
-      let tag = "all";
-      const projectItems = document.querySelectorAll(".project-item .category");
-      if (tag != "all") {
-        projectItems.forEach((item, index) => {
-          //ensure all items are populated again before filtering
-          document.querySelectorAll(".project-item")[index].style.display =
-            "block";
-          //filter times if category is included in innerHTML string
-          if (!item.innerHTML.toLowerCase().includes(tag.toLowerCase())) {
-            document.querySelectorAll(".project-item")[index].style.display =
-              "none";
-          }
-        });
-      } else {
-        //ensures to populate page if all is selected
-        document
-          .querySelectorAll(".project-item")
-          .forEach((item) => (item.style.display = "block"));
-      }
-    </script>
   </body>
 </html>
