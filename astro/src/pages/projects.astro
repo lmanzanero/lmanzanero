@@ -69,7 +69,9 @@ import Project from "../components/ProjectCard/Project.astro";
       </p>
       <div class="page-categories">
         <ul>
-          <li><span class="option active">All</span></li>
+          <li>
+            <span class="option active">All</span>
+          </li>
           <li><span class="option">JavaScript</span></li>
           <li><span class="option">React</span></li>
           <li><span class="option">Vue</span></li>
@@ -161,5 +163,42 @@ import Project from "../components/ProjectCard/Project.astro";
       </div>
     </main>
     <Footer />
+    <script>
+      let tag = "All";
+      const projectItems = document.querySelectorAll(".project-item .category");
+      const options = document.querySelectorAll(".option");
+
+      function onClickItem(e: Event) {
+        tag = (e.target as HTMLElement).innerHTML;
+        if (tag != "All") {
+          projectItems.forEach((item, index) => {
+            //ensure all items are populated again before filtering
+            (
+              document.querySelectorAll(".project-item")[index] as HTMLElement
+            ).style.display = "block";
+            //filter times if category is included in innerHTML string
+            if (!item.innerHTML.toLowerCase().includes(tag.toLowerCase())) {
+              (
+                document.querySelectorAll(".project-item")[index] as HTMLElement
+              ).style.display = "none";
+            }
+          });
+        } else {
+          //ensures to populate page if all is selected
+          document
+            .querySelectorAll(".project-item")
+            .forEach((item) => ((item as HTMLElement).style.display = "block"));
+        }
+        options.forEach((option) => {
+          option.classList.remove("active");
+        });
+        (e.target as HTMLElement).classList.add("active");
+      }
+
+      //adding click event to all project tags
+      document.querySelectorAll(".option").forEach((item) => {
+        item.addEventListener("click", onClickItem);
+      });
+    </script>
   </body>
 </html>
