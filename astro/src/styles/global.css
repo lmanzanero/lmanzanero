@@ -45,50 +45,7 @@ body::-webkit-scrollbar-thumb {
   background: #6649b8;
 }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 2000; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  position: relative;
-  background-color: #fefefe;
-  border: 3px solid var(--bg-primary);
-  border-radius: 00.4em;
-  margin: auto;
-  padding: 20px; 
-  width: 60%;
-  overflow: scroll;
-}
-
-/* The Close Button */
-.close {
-  position: absolute;
-  color: #aaaaaa; 
-  top: 5px;
-  right: 15px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;transition: all 0.5s;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;transition: all 0.5s;
-}
+ 
 
 .cart-btn {
   background-color: antiquewhite;
@@ -1130,22 +1087,6 @@ button:focus {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 
-
-  .modal { 
-    z-index: 1;
-    padding-top: 80px;
-  }
-
-
-    /* Modal Content */
- .modal .modal-content {
-    background-color: #ffffff;
-    margin: auto;
-    padding: 20px;
-    border-radius: 0.2em; 
-    width: 90%;
-    height: 75vh;
-  }
   /* Resume Section */
 
   .timeline {
