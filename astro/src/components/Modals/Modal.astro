@@ -1,11 +1,5 @@
 ---
 import "./modal.css";
-export interface Props {
-  isOpen: boolean;
-}
-
-const { isOpen } = Astro.props;
-console.log({ isOpen });
 ---
 
 <div class="modal">
@@ -20,7 +14,6 @@ console.log({ isOpen });
 <script>
   const modal = document.querySelector(".modal") as HTMLElement;
   const closeBtn = document.querySelector(".close") as HTMLElement;
-
   closeBtn.addEventListener("click", function () {
     modal.style.display = "none";
   });
