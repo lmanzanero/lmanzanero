@@ -2,14 +2,16 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/NavBar/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import Project from "../components/ProjectCard/Project.astro";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead
+      title="Projects"
+      description="Here is a collection of many projects that I have worked on, contributed, or built for fun!"
+    />
     <style>
       /* Projects Page */
       .page-categories {
@@ -83,6 +85,12 @@ import Project from "../components/ProjectCard/Project.astro";
       </div>
       <div class="project-items">
         <Project
+          name="Myogai - AI & Yoga"
+          tags="#JavaScript #React #python"
+          image_url="/projects/myogai.png"
+          project_link="https://www.myogai.com/"
+        />
+        <Project
           name="ESL Real Time Games"
           tags="#JavaScript #Svelte"
           image_url="https://esl-games.vercel.app/esl-social.jpg"
@@ -151,7 +159,7 @@ import Project from "../components/ProjectCard/Project.astro";
         <Project
           name="JavaScript Weather App"
           tags="#JavaScript"
-          image_url="https://res.cloudinary.com/daeq8bixw/image/upload/v1616780011/Screenshot_2021_03_27_at_01_33_24_005ba354d7.png"
+          image_url="/projects/belize-weather-app.png"
           project_link="https://lmanzanero.github.io/weather-app/"
         />
         <Project
