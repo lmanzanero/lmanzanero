@@ -23,7 +23,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
           startYear="2020"
           isLeft={false}
           role="Full stack developer & Mobile Developer!"
-          techStack={["test", "story"]}
+          techStack={["#test", "#story"]}
           details="I'm part of a team of international entrepreneurs and engineers building the technologies of tomorrow."
           siteLink="sdfsdfsdf"
         />
@@ -39,14 +39,5 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
         />
       </ul>
     </main>
-    <script>
-      const resumeElements = document.querySelectorAll(".more") as NodeList;
-      const modal = document.querySelector(".modal") as HTMLElement;
-      resumeElements.forEach((item) => {
-        item.addEventListener("click", () => {
-          modal.style.display = "block";
-        });
-      });
-    </script>
   </body>
 </html>

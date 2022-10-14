@@ -26,8 +26,18 @@ const {
 } = Astro.props;
 ---
 
-<li>
-  <Modal client:load>
+<li
+  id="resumeItem"
+  class="resume-item"
+  data-companydomain={companyDomain}
+  data-startyear={startYear}
+  data-endyear={endYear}
+  data-tags={techStack}
+  data-role={role}
+  data-details={details}
+  data-sitelink={siteLink}
+>
+  <Modal>
     <div class="resume-content">
       <div class="resume-title">{company}</div>
       <div class="resume-date">{startYear} - {endYear}</div>
@@ -47,7 +57,7 @@ const {
   </Modal>
   <div class={`${isLeft ? "direction-r" : "direction-l"}`}>
     <div class="flag-wrapper">
-      <span class="flag">{companyDomain}</span>
+      <p class="flag">{companyDomain}</p>
       <span class="time-wrapper"
         ><span class="time">{startYear} - {endYear}</span>
       </span>
@@ -60,5 +70,22 @@ const {
   </div>
 </li>
 <script>
-  (document.querySelector(".resume-title") as HTMLElement).innerText = "HEllo";
+  const resumeTitle = document.querySelector(".resume-title") as HTMLElement;
+  const resumeDate = document.querySelector(".resume-date") as HTMLElement;
+  const resumeTechs = document.querySelector(".resume-techs") as HTMLElement;
+  const resumeDesc = document.querySelector(".resume-desc") as HTMLElement;
+  const resumeElements = document.querySelectorAll(".more") as NodeList;
+  const modal = document.querySelector(".modal") as HTMLElement;
+  const resumeItems = document.querySelectorAll(
+    ".resume-item"
+  ) as NodeListOf<HTMLElement>;
+  resumeElements.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      modal.style.display = "block";
+      resumeTitle.innerText = `${resumeItems[index].dataset.companydomain}`;
+      resumeDate.innerText = `${resumeItems[index].dataset.startyear} - ${resumeItems[index].dataset.endyear}`;
+      resumeTechs.innerText = `${resumeItems[index].dataset.tags}`;
+      resumeDesc.innerText = `${resumeItems[index].dataset.details}`;
+    });
+  });
 </script>

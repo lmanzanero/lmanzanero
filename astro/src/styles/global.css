@@ -286,10 +286,10 @@ button:focus {
 .resume-content {
   color: #23232e;
   text-align: left;
-  font-family: inherit;
+  font-family: inherit; 
 }
 
-.resume-content .resume-title {
+.resume-title {
   font-size: 1.8rem;
   color: darkcyan; 
 }
