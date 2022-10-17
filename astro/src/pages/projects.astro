@@ -40,23 +40,25 @@ import Project from "../components/ProjectCard/Project.astro";
         background-color: var(--dark-color-b);
         border-radius: 3px;
         cursor: pointer;
+        border: 2px solid black;
       }
 
       .page-categories ul li span {
         color: var(--text-secondary);
+        padding: 0.2em;
       }
 
       .page-categories ul li span:hover {
         color: palegreen;
-        transition: all 0.5s;
+        transition: color 0.5s;
       }
 
       .page-categories ul li .active {
         color: palegreen;
         border-radius: 0.3em;
-        font-weight: 700;
-        padding: 0.2em;
-        transition: all 0.5s;
+        letter-spacing: 0.2em;
+        transition: color 0.5s;
+        font-weight: bolder;
       }
     </style>
   </head>
@@ -64,7 +66,7 @@ import Project from "../components/ProjectCard/Project.astro";
   <body>
     <Header />
     <main>
-      <h1 class="title">Projects!</h1>
+      <h1 class="title">Projects</h1>
       <p class="sub-title">
         Here is a collection of many projects that I have worked on,
         contributed, or built for fun!
@@ -160,7 +162,7 @@ import Project from "../components/ProjectCard/Project.astro";
           name="JavaScript Weather App"
           tags="#JavaScript"
           image_url="/projects/belize-weather-app.png"
-          project_link="https://lmanzanero.github.io/weather-app/"
+          project_link="https://weather-app-production-205a.up.railway.app/"
         />
         <Project
           name="JavaScript Youtube Player"
