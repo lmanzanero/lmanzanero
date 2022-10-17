@@ -14,13 +14,12 @@ permissions:
   pages: write
   id-token: write
 
-defaults:
-  run:
-    working-directory: astro
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+    run:
+      working-directory: ./astro
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v2
