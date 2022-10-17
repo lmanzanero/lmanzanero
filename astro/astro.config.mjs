@@ -7,4 +7,5 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
 	site: 'https://luismanzanero.com/',
 	integrations: [mdx(), sitemap()],
+	base: '/portfolio'
 });
