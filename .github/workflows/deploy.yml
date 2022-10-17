@@ -20,9 +20,9 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v2
+        working-directory: astro
       - name: Install, build, and upload your site output
         uses: withastro/action@v0
-        path: /astro
         # with:
         # path: . # The root location of your Astro project inside the repository. (optional)
         # node-version: 16 # The specific version of Node that should be used to build your site. Defaults to 16. (optional)
