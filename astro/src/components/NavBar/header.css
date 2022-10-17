@@ -92,8 +92,7 @@
 }
 
 .nav-link svg {
-  width: 2rem;
-  min-width: 2rem;
+  width: 2rem; 
   margin: 0 1.5rem;
 }
 
@@ -168,20 +167,19 @@ a {
   }
 
   .nav-link svg {
-    height: 2em;
-    width: 2em
+    height: 1.8em;
+    width: 1.8em
   }
 
   .nav-link { 
-    display: inline;
-    justify-content: center;
-    text-align: center;   
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
   }
 
-  .navbar .link-text {  
-    display: inline-block; 
-    text-align: center;
-    font-size: 1em; 
+  .navbar .link-text {    
+    font-size: 0.9rem;
+    margin: auto;
   }
 
   #socialMediaIcons {
@@ -196,10 +194,6 @@ a {
     width: 16rem;
     height: 100vh;
   }
-
-  /* .navbar:hover {
-    width: 16rem;
-  } */
 
   .navbar:hover .link-text {
     display: inline;
