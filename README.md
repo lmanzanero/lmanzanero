@@ -21,6 +21,7 @@ const lmanzanero = {
 
 * [🌐 luismanzanero.com](https://luismanzanero.com/)
 * [🎓 Resume](https://luismanzanero.com/resume)
+* [‍🚀 Projects](https://luismanzanero.com/projects)
 * [📝 Blog](https://luismanzanero.com/blog)
 * [🎸 Music](https://luismanzanero.com/music)
 * Follow me on [Instagram](https://www.instagram.com/manzanero.luis1995/), [LinkedIn](https://www.linkedin.com/in/luis-manzanero/), [Twitter](https://twitter.com/LuisMManzanero)
