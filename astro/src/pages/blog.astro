@@ -33,7 +33,7 @@ const sortedPost = blogEntires.sort(
                 day: "numeric",
               })}
               excerpt={post.data.description}
-              tags="story"
+              tags={post.data.tags}
               imageUrl={post.data.image}
               url={`blog/${post.slug}`}
             />
