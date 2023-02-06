@@ -3,12 +3,11 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/NavBar/Header.astro";
 import Footer from "../components/Footer.astro";
 import BlogCard from "../components/BlogCard/BlogCard.astro";
+import { getCollection } from "astro:content";
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
-  (a, b) =>
-    new Date(b.frontmatter.pubDate).valueOf() -
-    new Date(a.frontmatter.pubDate).valueOf()
+const blogEntires = await getCollection("blog");
+const sortedPost = blogEntires.sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
 );
 ---
 
@@ -25,21 +24,18 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
     <main>
       <div class="blog-posts">
         {
-          posts.map((post) => (
+          sortedPost.map((post) => (
             <BlogCard
-              title={post.frontmatter.title}
-              date={new Date(post.frontmatter.pubDate).toLocaleDateString(
-                "en-us",
-                {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                }
-              )}
-              excerpt={post.frontmatter.description}
+              title={post.data.title}
+              date={new Date(post.data.date).toLocaleDateString("en-us", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+              excerpt={post.data.description}
               tags="story"
-              imageUrl={post.frontmatter.heroImage}
-              url={post.url}
+              imageUrl={post.data.image}
+              url={`blog/${post.slug}`}
             />
           ))
         }
