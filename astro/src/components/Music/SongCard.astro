@@ -1,0 +1,27 @@
+---
+import "./song-card.css";
+
+export interface Props {
+  tags: string[];
+  title: string;
+  description: string;
+  date: string;
+  file: string;
+  image: string;
+}
+
+const { tags, title, description, date, url, image } = Astro.props;
+---
+
+<a href={url}>
+  <div class="song-card">
+    <div class="image">
+      <img src={image} />
+    </div>
+    <div class="song-info">
+      <div class="category">#<span>{tags}</span></div>
+      <div class="song-title"><h2>{title}</h2></div>
+      <div class="published-date">{date}</div>
+    </div>
+  </div>
+</a>
