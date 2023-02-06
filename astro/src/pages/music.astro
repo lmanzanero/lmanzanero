@@ -1,0 +1,46 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/NavBar/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getCollection } from "astro:content";
+import SongCard from "../components/Music/SongCard.astro";
+
+const musicEntires = await getCollection("music");
+const sortedMusic = musicEntires.sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Music"
+      description="Music that I have created and collaborated on!"
+    />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="blog-posts">
+        {
+          sortedMusic.map((post) => (
+            <SongCard
+              title={post.data.title}
+              date={new Date(post.data.date).toLocaleDateString("en-us", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+              description={post.data.description}
+              file={""}
+              tags={post.data.tags}
+              image={post.data.image}
+            />
+          ))
+        }
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
