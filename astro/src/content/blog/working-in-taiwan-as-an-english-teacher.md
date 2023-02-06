@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: "Working in Taiwan as an English teacher"
 description: "In December of 2019, after many life changing events, I decided to expand my life experencies and take a risk, which has turn out to be one of the best decisons I have made."
 date: "Jul 15 2022"

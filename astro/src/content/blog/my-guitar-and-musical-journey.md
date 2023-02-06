@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: "My guitar and musical journey"
 description: "I played every single day for an entire year, never knowing what I was doing, but the physical instrument had filled a void in my dreams."
 date: "Jul 22 2022"

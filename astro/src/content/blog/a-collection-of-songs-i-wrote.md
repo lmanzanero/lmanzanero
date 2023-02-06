@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: "A collection of my favourite songs I have written"
 description: "I love playing the guitar!"
 date: "Jul 01 2022"
