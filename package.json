@@ -9,7 +9,7 @@
     "mongoose": "^5.5.12",
     "jsdom": "^16.2.1",
     "marked": "^0.8.0",
-    "dompurify": "^2.0.8",
+    "dompurify": "^2.0.17",
     "slugify": "^1.4.0"
   },
   "devDependencies": {
