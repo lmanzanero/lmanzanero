@@ -13,7 +13,7 @@ export interface Props {
 const { tags, title, excerpt, date, url, imageUrl } = Astro.props;
 ---
 
-<a href={url}>
+<a href={`/blog/${url}`}>
   <div class="blog-post">
     <div class="image">
       <img src={imageUrl} />
