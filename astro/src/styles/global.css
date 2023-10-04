@@ -1,6 +1,5 @@
 :root {
-  font-size: 16px;
-  font-family: 'Open Sans';
+  font-size: 16px; 
   --text-primary: #b6b6b6;
   --text-secondary: #ececec;
   --bg-primary: #23232e;
@@ -16,8 +15,9 @@
 body {
 	color: black;
 	height: 100vh;
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
+  font-family: monospace;
+  font-weight: 600;
+	font-size: 16px;  
   /* background: linear-gradient(#2A5470, #4C4177); */
   background: var(--dark-color-a);
   margin: 0;
@@ -126,7 +126,6 @@ main .title {
   border-radius: 0.3em;
   border: 2px solid black;
   font-weight: bolder;
-  font-family: cubano,sans-serif;
 }
 
 main .sub-title {

@@ -51,6 +51,8 @@
 
 .project-inner .category { 
   color: palegreen;
+  font-weight: 100;
+  font-size:medium;
   padding: 5px 0;
   line-height: 1.5rem;
   cursor: pointer;
@@ -64,6 +66,9 @@
 }
 
 .project-inner .links a {  
+  font-weight: 100;
+  font-size: larger;
+  letter-spacing: 0.2rem;
   padding: 0.4em; 
   font-size: 0.8rem; 
   color: palegreen;
