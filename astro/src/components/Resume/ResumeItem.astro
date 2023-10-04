@@ -75,6 +75,9 @@ const {
   const resumeTechs = document.querySelector(".resume-techs") as HTMLElement;
   const resumeDesc = document.querySelector(".resume-desc") as HTMLElement;
   const resumeElements = document.querySelectorAll(".more") as NodeList;
+  const resumeLink = document.querySelector(
+    ".resume-content a"
+  ) as HTMLAnchorElement;
   const modal = document.querySelector(".modal") as HTMLElement;
   const resumeItems = document.querySelectorAll(
     ".resume-item"
@@ -86,6 +89,7 @@ const {
       resumeDate.innerText = `${resumeItems[index].dataset.startyear} - ${resumeItems[index].dataset.endyear}`;
       resumeTechs.innerText = `${resumeItems[index].dataset.tags}`;
       resumeDesc.innerText = `${resumeItems[index].dataset.details}`;
+      resumeLink.href = `${resumeItems[index].dataset.sitelink}`;
     });
   });
 </script>
