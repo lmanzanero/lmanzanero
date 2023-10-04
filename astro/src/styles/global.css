@@ -132,8 +132,8 @@ main .title {
 main .sub-title {
   color: var(--light-color);
   font-style: italic;
-  font-family: monospace;
-  padding: 0.8em 0px;
+  font-family: monospace; 
+  padding: 0.5em 1em;
   text-align: center;
   margin: 0 auto;
 }
