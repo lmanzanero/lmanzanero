@@ -50,6 +50,16 @@ const {
         object-fit: cover;
       }
 
+      #banner img {
+        display: block;
+        margin: 1em auto;
+        width: 50vw;
+        height: 60vh;
+        object-fit: cover;
+        border-radius: 0.4em;
+        box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+
       /* Small screens */
       @media only screen and (max-width: 600px) {
         main {
@@ -72,6 +82,15 @@ const {
         .markdown-container figure {
           width: 100%;
         }
+
+        #banner img {
+          width: 100vw;
+          margin: 0;
+          height: 60vh;
+          object-fit: cover;
+          border-radius: 0.4em;
+          box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
       }
     </style>
   </head>
@@ -81,15 +100,7 @@ const {
     <main>
       <article>
         <div id="banner">
-          {
-            (
-              <img
-                style="width: 100%; height: 70vh; object-fit: cover;"
-                src={image}
-                alt=""
-              />
-            )
-          }
+          {(<img src={image} alt="" />)}
         </div>
         <h1 class="title">{title}</h1>
         <!-- <h3>Posted on - {date && <time>{date}</time>}</h3> -->
