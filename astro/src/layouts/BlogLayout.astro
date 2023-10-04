@@ -19,6 +19,61 @@ const {
 <html lang="en">
   <head>
     <BaseHead title={`${title}`} description={description} image={image} />
+    <style>
+      .markdown-container {
+        font-size: 1.2em;
+        font-family: monospace;
+        line-height: 1.6em;
+        text-align: justify;
+        color: var(--text-primary);
+        padding: 1em 6em;
+      }
+      .markdown-container p {
+        margin: 1.3em auto;
+      }
+
+      .markdown-container figure {
+        margin: 0 auto;
+        width: 50vw;
+        height: 70vh;
+      }
+
+      .markdown-container figure figcaption {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        font-style: italic;
+      }
+
+      .markdown-container figure img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Small screens */
+      @media only screen and (max-width: 600px) {
+        main {
+          margin: 0;
+          padding: 0;
+          padding: auto;
+          width: 100%;
+        }
+
+        main .title {
+          margin: 0.5em;
+        }
+
+        .markdown-container {
+          padding: 1em 1em;
+          padding-bottom: 5em;
+          font-size: 1rem;
+        }
+
+        .markdown-container figure {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -37,8 +92,7 @@ const {
           }
         </div>
         <h1 class="title">{title}</h1>
-        {date && <time>{date}</time>}
-        <hr />
+        <!-- <h3>Posted on - {date && <time>{date}</time>}</h3> -->
         <div class="markdown">
           <div class="markdown-container">
             <slot />

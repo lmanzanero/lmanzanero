@@ -115,37 +115,6 @@ main {
   margin-right: 0;
 }
 
-main .markdown-container {
-  font-size: 1.2em;
-  font-family: monospace;
-  line-height: 1.6em; 
-  text-align: justify;
-  color: var(--text-primary);
-  padding: 1em 6em; 
-}
-
-main .markdown-container p {
-  margin: 1.3em auto;
-}
-
-.markdown-container figure {
-  margin: 0 auto;
-  width: 50vw;
-  height: 70vh;
-}
-
-.markdown-container figure figcaption {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  font-style: italic;
-}
-
-.markdown-container figure img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 main .title { 
   color: var(--light-color); 
   width:fit-content;
@@ -598,17 +567,6 @@ button:focus {
     padding: auto; 
     width: 100%; 
   }
-
-  main .markdown-container { 
-    padding: 1em 1em;
-    padding-bottom: 5em;
-    font-size: 1rem;
-  }
-
-  main .markdown-container figure{
-    width: 100%;
-  }
-
   .flex-container.mobile {
     position: relative;
     background-color: var(--bg-primary);
