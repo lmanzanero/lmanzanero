@@ -171,10 +171,10 @@ a {
     width: 1.8em
   }
 
-  .nav-link { 
-    display: flex;
+  .nav-link {  
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;  
+    height: auto;
   }
 
   .navbar .link-text {    
