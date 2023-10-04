@@ -18,24 +18,26 @@ import Project from "../components/ProjectCard/Project.astro";
         position: sticky;
         background-color: var(--dark-color-a);
         top: 0;
-        padding: 1em;
-        z-index: 1;
         text-align: center;
+        width: 100%;
       }
 
       .page-categories ul {
         display: flex;
         flex-direction: row;
         justify-content: center;
+        margin: auto;
+        width: 90%;
+        padding: 0.5em;
         gap: 1em;
-        overflow: scroll;
+        overflow-x: hidden;
         list-style-type: none;
       }
 
       .page-categories ul li {
-        margin: 5px auto;
+        margin: 0.5em auto;
         font-size: 0.9rem;
-        padding: 0.7em 0.5em;
+        padding: 0.5em;
         color: var(--text-secondary);
         background-color: var(--dark-color-b);
         border-radius: 3px;
@@ -45,7 +47,6 @@ import Project from "../components/ProjectCard/Project.astro";
 
       .page-categories ul li span {
         color: var(--text-secondary);
-        padding: 0.2em;
       }
 
       .page-categories ul li span:hover {
@@ -59,6 +60,14 @@ import Project from "../components/ProjectCard/Project.astro";
         letter-spacing: 0.2em;
         transition: color 0.5s;
         font-weight: bolder;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .page-categories ul {
+          gap: 1.2em;
+          overflow: scroll;
+          justify-content: left;
+        }
       }
     </style>
   </head>
@@ -161,7 +170,7 @@ import Project from "../components/ProjectCard/Project.astro";
         <Project
           name="React Firestore Shopping Cart"
           tags="#React #CloudFunctions #firestore"
-          image_url="https://res.cloudinary.com/daeq8bixw/image/upload/v1623945259/Screenshot_2021_06_17_at_23_54_09_4b9ce0c97b.png"
+          image_url="/projects/react-firebase-store.png"
           project_link="https://lmanzanero.github.io/firebase-react-store/"
         />
         <Project
