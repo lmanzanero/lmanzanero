@@ -11,42 +11,83 @@ import Header from "../components/NavBar/Header.astro";
       description="Hello! I am Luis Manzanero - An ethusiastic and experienced full stack web and mobile developer."
       image={"/luis-profile.webp"}
     />
+
+    <style>
+      .about-intro {
+        color: var(--text-primary);
+        font-size: 1.15em;
+        text-align: left;
+        height: auto;
+      }
+
+      p {
+        margin: 1em 3em;
+      }
+
+      .about-cta {
+        position: relative;
+        color: var(--text-primary);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 3em;
+      }
+
+      .about-img {
+        height: 200px;
+        width: 300px;
+        margin: auto;
+      }
+
+      .about-img img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        border-radius: 0.5em;
+      }
+    </style>
   </head>
   <body>
     <Header />
     <main>
       <h1 class="title">About</h1>
       <h4 class="sub-title">A little about me!</h4>
-      <div class="about-section-inner">
-        <div class="about-content">
-          <p>
-            Hello! I am Luis Manzanero - An enthusiastic and experienced full
-            stack web and mobile developer. I am from the world most beautiful
-            country, Belize! Growing up in the jungles of Belize, it is no
-            surprise that the environment plays a major role in my life. I am
-            always trying to learn new things and apply what I learn with the
-            things that make me happy and this world more sustainable. Recently,
-            I have been involved in various <a href="/projects">projects</a> related
-            to blockchain, web and mobile development. My curiosty and drive to learn
-            has brought many <a href="/resume">opportunities</a>, which has
-            cultivated a hollistic approach to save the environment and improve
-            our lives through innovations with technology. I also enjoy writing
-            about various topics which you can read on my <a href="/blog"
-              >blog</a
-            >
-          </p>
-          <br />
-          <span>I'd love to explore ways we can collaborate on a project!</span>
-          <br />
-          <br />
-          <a href="mailto:manzanero.luis1995@gmail.com"
-            ><button> Contact me</button>
-          </a>
+      <section class="about-intro">
+        <p>
+          Hi there! I'm Luis Manzanero, an enthusiastic and experienced
+          full-stack web and mobile developer hailing from the breathtaking
+          landscapes of Belize, the world's most beautiful country. My
+          upbringing in the lush jungles of Belize has instilled a deep
+          appreciation for the environment, which I combine with my passion for
+          technology to create meaningful solutions for a sustainable world.
+        </p>
+        <p>
+          I have a relentless desire to expand my knowledge and apply it to
+          projects that not only bring me joy but also contribute to the
+          betterment of our planet. In recent times, I've been actively engaged
+          in a variety of <a href="/projects">projects</a> spanning blockchain, web,
+          and mobile development. This journey has opened up numerous <a
+            href="/resume">opportunities</a
+          >, fostering a holistic approach that combines environmental
+          conservation with technological innovation.
+        </p>
+        <p>
+          Beyond coding, I'm also an avid writer, and you can explore my
+          thoughts on various topics in my <a href="/blog">blog</a>. I believe
+          in the power of words to inspire change and share insights on the
+          latest industry trends and innovations.
+        </p>
+      </section>
+      <section class="about-cta">
+        <div class="about-img">
+          <img src="https://luismanzanero.com/luis-profile.webp" />
         </div>
-        <div class="about-image">
-          <img src="/luis-profile.webp" />
-        </div>
-      </div>
+        <h3>I'd love to explore ways we can collaborate on a project!</h3>
+        <a href="mailto:manzanero.luis1995@gmail.com"
+          ><button> Contact me</button>
+        </a>
+      </section>
     </main>
   </body>
 </html>
