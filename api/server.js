@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const admin = require('./api/routes/admin');
-const dashboard = require('./api/routes/dashboard');
-const posts = require('./api/routes/posts');
-const projects = require('./api/routes/projects');
+const admin = require('./routes/admin');
+const dashboard = require('./routes/dashboard');
+const posts = require('./routes/posts');
+const projects = require('./routes/projects');
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
