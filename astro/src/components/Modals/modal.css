@@ -22,7 +22,7 @@
   margin: auto;
   padding: 20px; 
   width: 60%;
-  overflow: scroll;
+  overflow: auto;
 }
 
 /* The Close Button */
