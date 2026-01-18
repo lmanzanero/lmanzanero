@@ -5,7 +5,7 @@ import ResumeItem from "../components/Resume/ResumeItem.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <BaseHead
@@ -20,6 +20,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
       <h1 class="title">Resume</h1>
       <h4 class="sub-title">A timeline of where I have worked.</h4>
       <ul class="timeline">
+        <ResumeItem
+          company="Mohbel"
+          companyDomain="Mohbel.com"
+          startYear="2024"
+          isLeft={false}
+          role="Full Stack Web developer"
+          techStack={[
+            "#Svelte #SvelteKit #Postgres #DrizzleORM #Node.js #javascript",
+          ]}
+          details="I created and maintain the company's Fleet Management System for bus operators and commuters in Belize. \n My task are primarly adding new features to the website, planning and designing integrations with our software, and consulating on other technoligical areas for the company."
+          siteLink="https://mohbel.com/"
+        />
         <ResumeItem
           company="Myogai"
           companyDomain="Myogai.com"
@@ -48,7 +60,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
           role="Front-end Web developer"
           techStack={["#Javascript/TypeScript #Vue.js"]}
           details="Gift Cards Belize is an ecommerce website that allows Belizeans to purchase gift cards easily, at any time of the day without a credit card. At Gift Cards Belize, I built the front end portion of the website from mocks ups using various web technologies, and currently building features to integrate with other payments methods."
-          siteLink="sdfsdfsdf"
+          siteLink="#"
         />
         <ResumeItem
           company="Geolittered.org"
@@ -74,26 +86,25 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
           details="While on my last semester at Galen University, I started to work at GoBelizing L.T.D as a software engineer. GoBelizing has grown to be the largest online platform and marketplace for tours and activities in Belize, and is constantly evolving in new ways to meet the demands of online exposure. I eventually created an android app called Belizing Payments, which extended their existing platform to meet android users to accept payments on demand with their phones. Also, I did videos and edited podcast episodes to complement the company’s ever evolving platform. All the videos I have edited can be found on their Youtube Channel."
           siteLink="https://payments.belizing.com/"
         />
-
         <ResumeItem
           company="Galen University"
-          companyDomain="Galen University"
+          companyDomain="SoaringEagle"
           startYear="2016-2018"
           isLeft={false}
           role="Web Developer and content creator"
-          techStack={["#Wordpress #JavaScript"]}
+          techStack={["#Wordpress #JavaScript #Html"]}
           details="After applying for Galen University Environmental Science degree and their scholarship program, I was granted a work scholarship based on my programming skills. My main role was as a content creator, however, I eventually developed an interactive blog called The Soaring Eagle, which was used as the school's main informative blog at that time. I also enrolled in a few computer science classes to polish my programming skills."
-          siteLink="sdfsdfsdf"
+          siteLink="https://www.galen.edu.bz/news/"
         />
         <ResumeItem
           company="DegaSolutions Inc."
-          companyDomain="DegaSolutions Inc."
+          companyDomain="DegaSolutions"
           startYear="2015-2016"
           isLeft={true}
           role="Front-end Web Developer"
           techStack={["#JavaScript #Angular #Ionic/Cordova #wordpress"]}
           details="After enrolling in a few IT classes at Sacred Heart Junior College, and after helping others with programming, I was recommended for a remote software job while finishing up my associates degree. While at Dega Solutions, we were building a movie recommendation app that was based on the user's interaction."
-          siteLink="sdfsdfsdf"
+          siteLink="#"
         />
       </ul>
     </main>
