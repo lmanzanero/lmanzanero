@@ -3,7 +3,7 @@
 .hero {
   position: relative;
   overflow: hidden;
-  height: 100vh;
+  height: 100%;
   width: 100%; 
   margin: 0;
   padding: 0;
@@ -20,7 +20,7 @@
 }
 
 .hero-bg .content {
-  position: absolute;
+  position: fixed;
   bottom: 70px;
   left: 0px;
   opacity: 0;
