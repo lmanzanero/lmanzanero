@@ -20,8 +20,11 @@ import Header from "../components/NavBar/Header.astro";
         height: auto;
       }
 
-      p {
+      .about-intro p {
         margin: 1em 3em;
+        padding: 0.5em;
+        text-align: left;
+        font-size: large;
       }
 
       .about-cta {
@@ -45,6 +48,16 @@ import Header from "../components/NavBar/Header.astro";
         height: 100%;
         width: 100%;
         border-radius: 0.5em;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .about-intro p {
+          margin: 0.5em;
+        }
+
+        .about-img {
+          width: 92vw;
+        }
       }
     </style>
   </head>

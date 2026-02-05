@@ -22,12 +22,17 @@
 .hero-bg .content {
   position: absolute;
   bottom: 70px;
-  left: -400px;
+  left: 0px;
   opacity: 0;
   width: 600px;
-  background-color: rgba(0,0,0,0.5);
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.5);
   color: var(--text-primary);
   padding: 35px;
+  backdrop-filter: blur(3px);
+  /* Include -webkit- prefix for broader compatibility if needed */
+  -webkit-backdrop-filter: blur(3px);
+ text-shadow: 2px 2px black;
 }
 
 .hero-bg .content h1 {
@@ -49,7 +54,7 @@
 .hero-text {
   color: palegreen; 
   font-family: monospace;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 1.2vw;
 }
 

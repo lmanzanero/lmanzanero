@@ -560,10 +560,11 @@ button:focus {
 /* Small screens */
 @media only screen and (max-width: 600px) {
 
-  main {
-    margin: 0;
-    padding: 0;
-    padding: auto; 
+  main {  
+    margin-left: 0px;
+    padding-bottom: 100px;
+    padding: auto;  
+    overflow: auto; 
     width: 100%; 
   }
   .flex-container.mobile {

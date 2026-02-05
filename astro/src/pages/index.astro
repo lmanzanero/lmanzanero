@@ -9,6 +9,14 @@ import Home from "../components/Home/Home.astro";
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        padding: 0;
+        margin: 0;
+        overflow:hidden;
+        height: 100vh
+      }
+    </style>
   </head>
   <body>
     <Header title={SITE_TITLE} />
