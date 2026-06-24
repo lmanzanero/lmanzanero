@@ -1,112 +1,39 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/NavBar/Header.astro";
-import ResumeItem from "../components/Resume/ResumeItem.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import PortfolioLayout from "../layouts/PortfolioLayout.astro";
+import { resume } from "../data/resume";
+
+const description =
+  "Work history of Luis Manzanero — a self-taught full-stack web developer with a B.Sc. in Environmental Science, from Mohbel to Galen University.";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead
-      title="Resume"
-      description="I have a bachelors Degree in Enviornmetal Science and a self taugh Full Stack Web Developer."
-    />
-  </head>
-  <body>
-    <Header />
+<PortfolioLayout title="Resume" description={description}>
+  <div class="page rise">
+    <div class="prompt">$ git log --author="luis" --all</div>
+    <h1 class="page-title font-display" style="font-size:clamp(36px,5.5vw,64px);margin-bottom:40px">
+      Work history
+    </h1>
 
-    <main>
-      <h1 class="title">Resume</h1>
-      <h4 class="sub-title">A timeline of where I have worked.</h4>
-      <ul class="timeline">
-        <ResumeItem
-          company="Mohbel"
-          companyDomain="Mohbel.com"
-          startYear="2024"
-          isLeft={false}
-          role="Full Stack Web developer"
-          techStack={[
-            "#Svelte #SvelteKit #Postgres #DrizzleORM #Node.js #javascript",
-          ]}
-          details="I created and maintain the company's Fleet Management System for bus operators and commuters in Belize. \n My task are primarly adding new features to the website, planning and designing integrations with our software, and consulating on other technoligical areas for the company."
-          siteLink="https://mohbel.com/"
-        />
-        <ResumeItem
-          company="Myogai"
-          companyDomain="Myogai.com"
-          startYear="2021"
-          isLeft={true}
-          role="Full Stack Web developer"
-          techStack={["#React #Node.js #javascript #mediapipe"]}
-          details="Myogai is an online AI training web application that allows users to convert their tablet, phones, and laptops into a personal AI trainer. \n My tasks include planning, designing, and implementing features around the mediapipe AI network. I mainly work on the web version of the application, so far implementing authentication, payment gateways, and complex user friendly UI experiences."
-          siteLink="https://myogai.com/"
-        />
-        <ResumeItem
-          company="Nebula Core Technologies"
-          companyDomain="Nebulacore.tech"
-          startYear="2020"
-          isLeft={false}
-          role="Full stack developer & Mobile Developer!"
-          techStack={["#test #story"]}
-          details="I'm part of a team of international entrepreneurs and engineers building the technologies of tomorrow."
-          siteLink="https://nebulacore.tech/"
-        />
-        <ResumeItem
-          company="Gift Cards Belize"
-          companyDomain="GiftCards.bz"
-          startYear="2020"
-          isLeft={true}
-          role="Front-end Web developer"
-          techStack={["#Javascript/TypeScript #Vue.js"]}
-          details="Gift Cards Belize is an ecommerce website that allows Belizeans to purchase gift cards easily, at any time of the day without a credit card. At Gift Cards Belize, I built the front end portion of the website from mocks ups using various web technologies, and currently building features to integrate with other payments methods."
-          siteLink="#"
-        />
-        <ResumeItem
-          company="Geolittered.org"
-          companyDomain="Geolittered.org"
-          startYear="2018"
-          isLeft={false}
-          role="Full Stack Web Developer"
-          techStack={[
-            "#Javascript/TypeScript #Node.js #React #Next.js #flutter #dart",
-          ]}
-          details="While at Galen University, for my final project, I developed the idea of creating a social network to enforce environmental laws. The main functionality, granting users to report any illegal activity that might breach our environmental laws, in the hopes that authorities can act upon as soon as possible with concrete evidence. This is still an ongoing project which I have opened sourced, and plan to work on as a hobby or use to further my studies."
-          siteLink="https://giftcards.bz/"
-        />
-        <ResumeItem
-          company="Belizing.com"
-          companyDomain="Belizing.com"
-          startYear="2018-2020"
-          isLeft={true}
-          role="Content Creator & Android Developer"
-          techStack={[
-            "#kotlin #AndroidStudio #Javascript #Node.js - Alexa Skills Kit",
-          ]}
-          details="While on my last semester at Galen University, I started to work at GoBelizing L.T.D as a software engineer. GoBelizing has grown to be the largest online platform and marketplace for tours and activities in Belize, and is constantly evolving in new ways to meet the demands of online exposure. I eventually created an android app called Belizing Payments, which extended their existing platform to meet android users to accept payments on demand with their phones. Also, I did videos and edited podcast episodes to complement the company’s ever evolving platform. All the videos I have edited can be found on their Youtube Channel."
-          siteLink="https://payments.belizing.com/"
-        />
-        <ResumeItem
-          company="Galen University"
-          companyDomain="SoaringEagle"
-          startYear="2016-2018"
-          isLeft={false}
-          role="Web Developer and content creator"
-          techStack={["#Wordpress #JavaScript #Html"]}
-          details="After applying for Galen University Environmental Science degree and their scholarship program, I was granted a work scholarship based on my programming skills. My main role was as a content creator, however, I eventually developed an interactive blog called The Soaring Eagle, which was used as the school's main informative blog at that time. I also enrolled in a few computer science classes to polish my programming skills."
-          siteLink="https://www.galen.edu.bz/news/"
-        />
-        <ResumeItem
-          company="DegaSolutions Inc."
-          companyDomain="DegaSolutions"
-          startYear="2015-2016"
-          isLeft={true}
-          role="Front-end Web Developer"
-          techStack={["#JavaScript #Angular #Ionic/Cordova #wordpress"]}
-          details="After enrolling in a few IT classes at Sacred Heart Junior College, and after helping others with programming, I was recommended for a remote software job while finishing up my associates degree. While at Dega Solutions, we were building a movie recommendation app that was based on the user's interaction."
-          siteLink="#"
-        />
-      </ul>
-    </main>
-  </body>
-</html>
+    <ol class="timeline">
+      {
+        resume.map((job) => (
+          <li class="timeline-item">
+            <div class="job">
+              <div class="job-head">
+                <div class="job-co font-display">{job.co}</div>
+                <div class="job-yr">{job.year}</div>
+              </div>
+              <div class="job-role">{job.role}</div>
+              <div class="job-stack">{job.stack}</div>
+              <p class="job-desc">{job.desc}</p>
+              {job.link !== "#" && (
+                <a class="job-link" href={job.link} target="_blank" rel="noopener">
+                  {job.domain} ↗
+                </a>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</PortfolioLayout>

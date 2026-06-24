@@ -1,46 +1,169 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/NavBar/Header.astro";
-import Footer from "../components/Footer.astro";
+import PortfolioLayout from "../layouts/PortfolioLayout.astro";
 import { getCollection } from "astro:content";
-import SongCard from "../components/Music/SongCard.astro";
+import { resolveTracks, type RawTrack } from "../lib/soundcloud";
 
-const musicEntires = await getCollection("music");
-const sortedMusic = musicEntires.sort(
-  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+const musicEntries = await getCollection("music");
+const raws: RawTrack[] = musicEntries
+  .filter((e) => e.data.soundCloudUrl)
+  .map((e, i) => ({
+    id: e.id,
+    soundCloudUrl: e.data.soundCloudUrl,
+    order: (e.data as { order?: number }).order ?? i,
+    tag: e.data.tags?.[0],
+    note: e.data.description,
+    title: e.data.title,
+    image: e.data.image,
+    youtubeUrl: e.data.youtubeUrl,
+  }));
+const tracks = await resolveTracks(raws);
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
 );
+
+const albumArt = tracks[0]?.artwork || "/posts/luis-music-album-picture.png";
+const description =
+  "Original instrumental music written and recorded by Luis Manzanero — guitar-driven songs, with the stories behind them.";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead
-      title="Music"
-      description="Music that I have created and collaborated on!"
-    />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <div class="blog-posts">
+<PortfolioLayout title="Music" description={description} image={albumArt}>
+  <div class="page rise">
+    <div class="prompt">$ cd ~/music &amp;&amp; ls -l</div>
+
+    <div class="album">
+      <div class="album-art-wrap">
+        <img class="album-art" src={albumArt} alt="Album art" />
+        <div class="album-badge">SOUNDCLOUD</div>
+      </div>
+      <div class="album-meta">
+        <div class="album-kicker">ORIGINAL MUSIC</div>
+        <h1 class="page-title album-title font-display">Riffs &amp;<br />Recordings</h1>
+        <div class="album-sub">
+          Luis Manzanero · {tracks.length}
+          {tracks.length === 1 ? " track" : " tracks"} · instrumental guitar
+        </div>
         {
-          sortedMusic.map((post) => (
-            <SongCard
-              title={post.data.title}
-              date={new Date(post.data.date).toLocaleDateString("en-us", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
-              description={post.data.description}
-              file={""}
-              tags={post.data.tags}
-              image={post.data.image}
-            />
+          tracks.length > 0 && (
+            <div class="album-actions">
+              <button class="btn-solid btnx" data-play-track="0">▶ Play all</button>
+              <button class="btn-ghost btnx" data-np-open>Open player</button>
+            </div>
+          )
+        }
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="songs">
+        ♫ Songs <span class="count">{String(tracks.length).padStart(2, "0")}</span>
+      </button>
+      <button class="tab" data-tab="stories">
+        ✎ Stories <span class="count">{String(posts.length).padStart(2, "0")}</span>
+      </button>
+    </div>
+
+    <!-- Songs -->
+    <div data-panel="songs">
+      {
+        tracks.length === 0 ? (
+          <div class="note-line">// tracks are being added — check back soon.</div>
+        ) : (
+          <>
+            <div class="note-line">
+              // every track is its own post — tap a row to read the liner notes
+            </div>
+            <div class="tracklist">
+              {tracks.map((t, i) => (
+                <div class="track" data-track={i}>
+                  <div class="track-row" data-track-toggle>
+                    <span class="track-num">{i + 1}</span>
+                    <span class="track-info">
+                      <span class="track-title">{t.title}</span>
+                      <span class="track-tag">#{t.tag}</span>
+                    </span>
+                    <span class="track-dur">{t.duration}</span>
+                    <button class="track-play btnx" data-play-track={i} aria-label={`Play ${t.title}`}>
+                      <span data-track-glyph>▶</span>
+                    </button>
+                    <span class="track-chevron">▸</span>
+                  </div>
+                  {(t.note || t.youtubeUrl || t.permalink) && (
+                    <div class="liner" hidden>
+                      {t.note && <p>{t.note}</p>}
+                      <div class="liner-links">
+                        {t.youtubeUrl && (
+                          <a href={t.youtubeUrl} target="_blank" rel="noopener">
+                            ▶ YouTube
+                          </a>
+                        )}
+                        <a href={t.permalink} target="_blank" rel="noopener">
+                          ☁ SoundCloud
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </>
+        )
+      }
+    </div>
+
+    <!-- Stories (blog) -->
+    <div data-panel="stories" hidden>
+      <div class="note-line">// field notes — writing on ecology, music &amp; the road</div>
+      <div class="stories">
+        {
+          posts.map((post) => (
+            <a class="post-card btnx" href={`/blog/${post.id}`}>
+              <img src={post.data.image} alt={post.data.title} loading="lazy" />
+              <div class="post-body">
+                <div class="post-tag">
+                  #{post.data.tags[0]} ·{" "}
+                  {new Date(post.data.date).toLocaleDateString("en-us", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </div>
+                <div class="post-title">{post.data.title}</div>
+                <p class="post-desc">{post.data.description}</p>
+              </div>
+            </a>
           ))
         }
       </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+    </div>
+  </div>
+</PortfolioLayout>
+
+<script>
+  function initMusic() {
+    const tabs = Array.from(document.querySelectorAll<HTMLElement>("[data-tab]"));
+    if (!tabs.length) return;
+    const panels = Array.from(document.querySelectorAll<HTMLElement>("[data-panel]"));
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => t.classList.toggle("active", t === tab));
+        panels.forEach((p) => (p.hidden = p.dataset.panel !== tab.dataset.tab));
+      });
+    });
+
+    // Expand / collapse liner notes (ignore clicks on the play button).
+    document.querySelectorAll<HTMLElement>("[data-track-toggle]").forEach((row) => {
+      row.addEventListener("click", (e) => {
+        if ((e.target as HTMLElement).closest("[data-play-track]")) return;
+        const track = row.closest<HTMLElement>("[data-track]");
+        const liner = track?.querySelector<HTMLElement>(".liner");
+        const chev = row.querySelector<HTMLElement>(".track-chevron");
+        if (!liner) return;
+        const opening = liner.hasAttribute("hidden");
+        liner.hidden = !opening;
+        if (chev) chev.textContent = opening ? "▾" : "▸";
+      });
+    });
+  }
+  document.addEventListener("astro:page-load", initMusic);
+</script>

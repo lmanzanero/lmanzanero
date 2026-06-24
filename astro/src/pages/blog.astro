@@ -1,45 +1,40 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/NavBar/Header.astro";
-import Footer from "../components/Footer.astro";
-import BlogCard from "../components/BlogCard/BlogCard.astro";
+import PortfolioLayout from "../layouts/PortfolioLayout.astro";
 import { getCollection } from "astro:content";
 
-const blogEntires = await getCollection("blog");
-const sortedPost = blogEntires.sort(
-  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+const posts = (await getCollection("blog")).sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
 );
+const description =
+  "Field notes by Luis Manzanero — writing on ecology, music, and life on the road.";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead
-      title="Blog"
-      description="I also enjoy writing about the environment, life experiences, and music!"
-    />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <div class="blog-posts">
-        {
-          sortedPost.map((post) => (
-            <BlogCard
-              title={post.data.title}
-              date={new Date(post.data.date).toLocaleDateString("en-us", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
-              excerpt={post.data.description}
-              tags={post.data.tags}
-              imageUrl={post.data.image}
-              url={`${post.slug}`}
-            />
-          ))
-        }
-      </div>
-    </main>
-  </body>
-</html>
+<PortfolioLayout title="Stories" description={description}>
+  <div class="page rise">
+    <div class="prompt">$ ls ~/stories/</div>
+    <h1 class="page-title font-display" style="font-size:clamp(36px,5.5vw,64px);margin-bottom:26px">
+      Field notes
+    </h1>
+    <div class="stories">
+      {
+        posts.map((post) => (
+          <a class="post-card btnx" href={`/blog/${post.id}`}>
+            <img src={post.data.image} alt={post.data.title} loading="lazy" />
+            <div class="post-body">
+              <div class="post-tag">
+                #{post.data.tags[0]} ·{" "}
+                {new Date(post.data.date).toLocaleDateString("en-us", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </div>
+              <div class="post-title">{post.data.title}</div>
+              <p class="post-desc">{post.data.description}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</PortfolioLayout>

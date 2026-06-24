@@ -1,6 +1,5 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/NavBar/Header.astro";
+import PortfolioLayout from "./PortfolioLayout.astro";
 
 export interface Props {
   content: {
@@ -8,108 +7,37 @@ export interface Props {
     description: string;
     date?: string;
     image?: string;
+    tags?: string[];
   };
 }
 
 const {
-  content: { title, description, date, image },
+  content: { title, description, date, image, tags },
 } = Astro.props;
+
+const formattedDate = date
+  ? new Date(date).toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  : null;
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={`${title}`} description={description} image={image} />
-    <style>
-      .markdown-container {
-        font-size: 1.2em;
-        font-family: monospace;
-        line-height: 1.6em;
-        text-align: justify;
-        color: var(--text-primary);
-        padding: 1em 6em;
-      }
-      .markdown-container p {
-        margin: 1.3em auto;
-      }
-
-      .markdown-container figure {
-        margin: 0 auto;
-        width: 50vw;
-        height: 70vh;
-      }
-
-      .markdown-container figure figcaption {
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-        font-style: italic;
-      }
-
-      .markdown-container figure img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      #banner img {
-        display: block;
-        margin: 1em auto;
-        width: 50vw;
-        height: 60vh;
-        object-fit: cover;
-        border-radius: 0.4em;
-        box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Small screens */
-      @media only screen and (max-width: 600px) {
-        main {
-          margin: 0;
-          padding: 0;
-          padding: auto;
-          width: 100%;
-        }
-
-        main .title {
-          margin: 0.5em;
-        }
-
-        .markdown-container {
-          padding: 1em 1em;
-          padding-bottom: 5em;
-          font-size: 1rem;
-        }
-
-        .markdown-container figure {
-          width: 100%;
-        }
-
-        #banner img {
-          width: 100vw;
-          margin: 0;
-          height: 60vh;
-          object-fit: cover;
-          border-radius: 0.4em;
-          box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <Header />
-    <main>
-      <article>
-        <div id="banner">
-          {(<img src={image} alt="" />)}
-        </div>
-        <h1 class="title">{title}</h1>
-        <!-- <h3>Posted on - {date && <time>{date}</time>}</h3> -->
-        <div class="markdown">
-          <div class="markdown-container">
-            <slot />
-          </div>
-        </div>
-      </article>
-    </main>
-  </body>
-</html>
+<PortfolioLayout title={title} description={description} image={image} type="article">
+  <div class="page rise">
+    <article class="article">
+      <a class="prompt" href="/music" style="text-decoration:none;display:inline-block">
+        $ cd ~/stories &amp;&amp; cat
+      </a>
+      {image && <img class="article-hero" src={image} alt={title} />}
+      <div class="post-tag">
+        {tags?.[0] && <>#{tags[0]}</>}{formattedDate && <> · {formattedDate}</>}
+      </div>
+      <h1 class="article-title">{title}</h1>
+      <div class="prose">
+        <slot />
+      </div>
+    </article>
+  </div>
+</PortfolioLayout>
