@@ -1,0 +1,20 @@
+---
+import "./modal.css";
+---
+
+<div class="modal">
+  <div class="modal-content">
+    <span title="close" class="close">&times;</span>
+    <div>
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.querySelector(".modal") as HTMLElement;
+  const closeBtn = document.querySelector(".close") as HTMLElement;
+  closeBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+</script>

@@ -1,0 +1,20 @@
+---
+export interface Props {
+  title: string;
+  date: string;
+  techs: string[];
+  description: string;
+  siteLink: string;
+}
+
+const { title, date, techs, description, siteLink } = Astro.props;
+---
+
+<div class="resume-content">
+  <div class="resume-title">{title}</div>
+  <div class="resume-date">{date}</div>
+  <div class="resume-techs">{techs}</div>
+  <div class="resume-desc">{description}</div>
+  <br />
+  <a href={siteLink} target="_blank"> Learn More</a>
+</div>

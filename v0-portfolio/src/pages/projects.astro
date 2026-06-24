@@ -1,0 +1,252 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/NavBar/Header.astro";
+import Footer from "../components/Footer.astro";
+import Project from "../components/ProjectCard/Project.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Projects"
+      description="Here is a collection of many projects that I have worked on, contributed, or built for fun!"
+    />
+    <style>
+      /* Projects Page */
+      .page-categories {
+        position: sticky;
+        background-color: var(--dark-color-a);
+        top: 0;
+        text-align: center;
+        width: 100%;
+      }
+
+      .page-categories ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+        width: 90%;
+        padding: 0.5em;
+        gap: 1em;
+        overflow-x: hidden;
+        list-style-type: none;
+      }
+
+      .page-categories ul li {
+        margin: 0.5em auto;
+        font-size: 0.9rem;
+        padding: 0.5em;
+        color: var(--text-secondary);
+        background-color: var(--dark-color-b);
+        border-radius: 3px;
+        cursor: pointer;
+        border: 2px solid black;
+      }
+
+      .page-categories ul li span {
+        color: var(--text-secondary);
+      }
+
+      .page-categories ul li span:hover {
+        color: palegreen;
+        transition: color 0.5s;
+      }
+
+      .page-categories ul li .active {
+        color: palegreen;
+        border-radius: 0.3em;
+        letter-spacing: 0.2em;
+        transition: color 0.5s;
+        font-weight: bolder;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .page-categories ul {
+          gap: 1.2em;
+          overflow: scroll;
+          justify-content: left;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <h1 class="title">Projects</h1>
+      <p class="sub-title">
+        Here is a collection of many projects and tech stacks I've worked on!
+      </p>
+      <div class="page-categories">
+        <ul>
+          <li>
+            <span class="option active">All</span>
+          </li>
+          <li><span class="option">JavaScript</span></li>
+          <li><span class="option">React</span></li>
+          <li><span class="option">Vue</span></li>
+          <li><span class="option">Svelte</span></li>
+          <li><span class="option">Node.js</span></li>
+          <li><span class="option">Flutter/Dart</span></li>
+          <li><span class="option">Kotlin</span></li>
+        </ul>
+      </div>
+      <div class="project-items">
+        <Project
+          name="Tickets.mohbel.com"
+          tags="#JavaScript #Node.js #Svelte"
+          image_url="/projects/tickets.mohbel.webp"
+          project_link="https://tickets.mohbel.com/"
+        />
+        <Project
+          name="Myogai - AI & Yoga"
+          tags="#JavaScript #React #python"
+          image_url="/projects/myogai.png"
+          project_link="https://www.myogai.com/"
+        />
+        <Project
+          name="Wise Fool Localization"
+          tags="#JavaScript #Astro.js #TailwindCSS"
+          image_url="https://i0.wp.com/wisefoollocalization.com/wp-content/uploads/2025/03/Joker-sMALL.jpg?w=996&ssl=1"
+          project_link="https://wisefoollocalization.vercel.app/"
+        />
+        <Project
+          name="Magicmovement.org"
+          tags="#JavaScript #Svelte #TailwindCSS"
+          image_url="https://magicmovement.org/MagicMovement.org_files/Logo_Header.png"
+          project_link="https://magicmovement.org/"
+        />
+        <Project
+          name="ESL Real Time Games"
+          tags="#JavaScript #Svelte"
+          image_url="https://esl-games.vercel.app/esl-social.jpg"
+          project_link="https://esl-games.vercel.app/"
+        />
+        <Project
+          name="ESL Word Sorter"
+          tags="#JavaScript #Svelte"
+          image_url="/projects/esl-word-sorter.png"
+          project_link="https://eslkit.org/esl-words-sorter"
+        />
+        <Project
+          name="Esl Whack a mole"
+          tags="#JavaScript #Svelte"
+          image_url="https://esl-games.vercel.app/whack-a-mole.webp"
+          project_link="https://esl-games.vercel.app/whack-a-mole"
+        />
+        <Project
+          name="Wheel of names"
+          tags="#JavaScript #Svelte"
+          image_url="https://esl-games.vercel.app/wheel-of-names.webp"
+          project_link="https://esl-games.vercel.app/wheel-of-names"
+        />
+        <Project
+          name="Score Keeper"
+          tags="#JavaScript #Svelte"
+          image_url="https://esl-games.vercel.app/score-keeper.png"
+          project_link="https://esl-games.vercel.app/score-keeper"
+        />
+        <Project
+          name="Gift Cards Belize"
+          tags="#React"
+          image_url="/projects/gift-cards-bz.png"
+          project_link="https://giftcards.bz/"
+        />
+        <Project
+          name="Geolittered.org"
+          tags="#React #Node.js #JavaScript"
+          image_url="/projects/ecocrypt.org.png"
+          project_link="https://geo-littered.vercel.app/"
+        />
+        <Project
+          name="Belize Coronavirus Tracker"
+          tags="#JavaScript"
+          image_url="/projects/belize-covid.png"
+          project_link="https://lmanzanero.github.io/belize-coronavirus-tracker/"
+        />
+        <Project
+          name="BettaPay"
+          tags="#Vue"
+          image_url="/projects/bettapay.png"
+          project_link="https://bettapay.app/"
+        />
+        <Project
+          name="BettaPay Mobile"
+          tags="#Flutter/Dart"
+          image_url="/projects/bettapay-mobile.png"
+          project_link="https://bettapay.app/"
+        />
+        <Project
+          name="Geolittered.org Mobile"
+          tags="#Flutter/Dart"
+          image_url="/projects/ecocrypt-mobile.png"
+          project_link="https://github.com/GeoLitter/mobile-app"
+        />
+        <Project
+          name="Belizing Payments - Android"
+          tags="#Kotlin"
+          image_url="/projects/belize-pay.png"
+          project_link="https://payments.belizing.com/"
+        />
+        <Project
+          name="React Firestore Shopping Cart"
+          tags="#React #CloudFunctions #firestore"
+          image_url="/projects/react-firebase-store.png"
+          project_link="https://lmanzanero.github.io/firebase-react-store/"
+        />
+        <Project
+          name="JavaScript Weather App"
+          tags="#JavaScript"
+          image_url="/projects/belize-weather-app.png"
+          project_link="https://weather-app-production-205a.up.railway.app/"
+        />
+        <Project
+          name="JavaScript Calculator"
+          tags="#JavaScript"
+          image_url="/projects/js-calculator.png"
+          project_link="https://lmanzanero.github.io/functional-js-calculator/"
+        />
+      </div>
+    </main>
+ 
+    <script>
+      let tag = "All";
+      const projectItems = document.querySelectorAll(".project-item .category");
+      const options = document.querySelectorAll(".option");
+
+      function onClickItem(e: Event) {
+        tag = (e.target as HTMLElement).innerHTML;
+        if (tag != "All") {
+          projectItems.forEach((item, index) => {
+            //ensure all items are populated again before filtering
+            (
+              document.querySelectorAll(".project-item")[index] as HTMLElement
+            ).style.display = "block";
+            //filter times if category is included in innerHTML string
+            if (!item.innerHTML.toLowerCase().includes(tag.toLowerCase())) {
+              (
+                document.querySelectorAll(".project-item")[index] as HTMLElement
+              ).style.display = "none";
+            }
+          });
+        } else {
+          //ensures to populate page if all is selected
+          document
+            .querySelectorAll(".project-item")
+            .forEach((item) => ((item as HTMLElement).style.display = "block"));
+        }
+        options.forEach((option) => {
+          option.classList.remove("active");
+        });
+        (e.target as HTMLElement).classList.add("active");
+      }
+
+      //adding click event to all project tags
+      document.querySelectorAll(".option").forEach((item) => {
+        item.addEventListener("click", onClickItem);
+      });
+    </script>
+  </body>
+</html>

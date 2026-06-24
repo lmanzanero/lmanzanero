@@ -1,0 +1,27 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/NavBar/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import Home from "../components/Home/Home.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        padding: 0;
+        margin: 0;
+        overflow:hidden;
+        height: 100vh
+      }
+    </style>
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <Home />
+    </main>
+  </body>
+</html>
