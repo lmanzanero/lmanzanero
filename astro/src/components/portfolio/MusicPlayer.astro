@@ -1,0 +1,274 @@
+---
+import type { Track } from "../../lib/soundcloud";
+
+interface Props {
+  tracks: Track[];
+}
+
+const { tracks } = Astro.props;
+const first = tracks[0];
+const fallbackArt = "/posts/luis-music-album-picture.png";
+const firstArt = first?.artwork || fallbackArt;
+
+// Static waveform shape (matches the design); the script fills it by progress.
+const wave = Array.from({ length: 74 }, (_, i) => {
+  const base = 0.32 + 0.68 * Math.abs(Math.sin(i * 0.55) + 0.4 * Math.sin(i * 0.21));
+  return Math.max(0.14, Math.min(1, base));
+});
+---
+
+{
+  tracks.length > 0 && (
+    <div class="player" data-player-root transition:persist="music-player">
+      <script id="sc-tracks" type="application/json" is:inline set:html={JSON.stringify(tracks)} />
+
+      {/* Hidden SoundCloud widget that actually plays the audio */}
+      <iframe
+        id="sc-widget"
+        class="sc-frame"
+        title="SoundCloud player"
+        allow="autoplay"
+        src={first.widgetUrl}
+      />
+
+      {/* Desktop sidebar mini-player */}
+      <div class="desk-mini">
+        <div class="desk-mini-row">
+          <img class="mini-art" data-player-art data-player-open src={firstArt} alt="" />
+          <div class="mini-meta" data-player-open>
+            <div class="mini-title" data-player-title>{first.title}</div>
+            <div class="mini-artist">Luis Manzanero</div>
+          </div>
+          <button class="play-circle btnx" data-player-toggle aria-label="Play / pause">
+            <span class="glyph-play">▶</span>
+            <span class="glyph-pause">❚❚</span>
+          </button>
+        </div>
+        <div class="progress" data-player-seek>
+          <div class="progress-fill" data-player-progress />
+        </div>
+      </div>
+
+      {/* Mobile shell player (above the bottom nav) */}
+      <div class="mob-shell">
+        <div class="mob-shell-inner">
+          <div class="mob-shell-row">
+            <img class="mini-art" data-player-art data-player-open src={firstArt} alt="" />
+            <div class="mini-meta" data-player-open>
+              <div class="mini-title" data-player-title>{first.title}</div>
+              <div class="mini-artist">Luis Manzanero</div>
+            </div>
+            <button class="icon-btn" data-player-prev aria-label="Previous">⏮</button>
+            <button class="play-circle btnx" data-player-toggle aria-label="Play / pause">
+              <span class="glyph-play">▶</span>
+              <span class="glyph-pause">❚❚</span>
+            </button>
+            <button class="icon-btn" data-player-next aria-label="Next">⏭</button>
+          </div>
+          <div class="progress" data-player-seek>
+            <div class="progress-fill" data-player-progress />
+          </div>
+        </div>
+      </div>
+
+      {/* Full-screen now-playing overlay */}
+      <div class="np" data-np hidden>
+        <img class="np-bg" data-np-art src={firstArt} alt="" />
+        <div class="np-scrim" />
+        <div class="np-top">
+          <div class="np-label">▶ NOW PLAYING</div>
+          <button class="np-close btnx" data-player-close aria-label="Close">✕</button>
+        </div>
+        <div class="np-body">
+          <img class="np-art" data-player-art data-np-art src={firstArt} alt="" />
+          <div>
+            <div class="np-title" data-player-title data-np-title>{first.title}</div>
+            <div class="np-artist">Luis Manzanero</div>
+          </div>
+          <div class="np-wave-wrap">
+            <div class="np-wave" data-player-seek>
+              {wave.map((h) => (
+                <span data-wave-bar style={`height:${(h * 100).toFixed(1)}%`} />
+              ))}
+            </div>
+            <div class="np-times">
+              <span data-player-cur>0:00</span>
+              <span data-player-dur>0:00</span>
+            </div>
+          </div>
+          <div class="np-controls">
+            <button class="np-skip btnx" data-player-prev aria-label="Previous">⏮</button>
+            <button class="np-play btnx" data-player-toggle aria-label="Play / pause">
+              <span class="glyph-play" style="margin-left:4px">▶</span>
+              <span class="glyph-pause">❚❚</span>
+            </button>
+            <button class="np-skip btnx" data-player-next aria-label="Next">⏭</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+<script>
+  // Persistent SoundCloud-backed player. Initializes once; survives view
+  // transitions because the root iframe is marked transition:persist.
+  interface SCWidget {
+    bind(ev: string, cb: (e?: any) => void): void;
+    load(url: string, opts: any): void;
+    toggle(): void;
+    seekTo(ms: number): void;
+    getDuration(cb: (ms: number) => void): void;
+  }
+
+  function loadSCApi(): Promise<any> {
+    return new Promise((resolve) => {
+      const w = window as any;
+      if (w.SC && w.SC.Widget) return resolve(w.SC);
+      let s = document.getElementById("sc-api") as HTMLScriptElement | null;
+      if (s) {
+        s.addEventListener("load", () => resolve((window as any).SC));
+        return;
+      }
+      s = document.createElement("script");
+      s.id = "sc-api";
+      s.src = "https://w.soundcloud.com/player/api.js";
+      s.addEventListener("load", () => resolve((window as any).SC));
+      document.head.appendChild(s);
+    });
+  }
+
+  function fmt(ms: number): string {
+    const total = Math.floor((ms || 0) / 1000);
+    const m = Math.floor(total / 60);
+    const s = total % 60;
+    return m + ":" + String(s).padStart(2, "0");
+  }
+
+  async function initPlayer() {
+    const root = document.querySelector<HTMLElement>("[data-player-root]");
+    if (!root || root.dataset.ready === "1") return;
+    const iframe = root.querySelector<HTMLIFrameElement>("#sc-widget");
+    const tracksEl = document.getElementById("sc-tracks");
+    const tracks = tracksEl ? JSON.parse(tracksEl.textContent || "[]") : [];
+    if (!iframe || !tracks.length) return;
+    root.dataset.ready = "1";
+
+    const SC = await loadSCApi();
+    const widget: SCWidget = SC.Widget(iframe);
+    let idx = 0;
+    let playing = false;
+    let duration = 0;
+
+    const all = (sel: string) => Array.from(root.querySelectorAll<HTMLElement>(sel));
+    const titleEls = all("[data-player-title]");
+    const artEls = all("[data-player-art],[data-np-art]") as HTMLImageElement[];
+    const fillEls = all("[data-player-progress]");
+    const curEl = root.querySelector("[data-player-cur]");
+    const durEl = root.querySelector("[data-player-dur]");
+    const waveBars = all("[data-wave-bar]");
+    const np = root.querySelector<HTMLElement>("[data-np]");
+
+    function setMeta(t: any) {
+      titleEls.forEach((e) => (e.textContent = t.title));
+      if (t.artwork) artEls.forEach((e) => (e.src = t.artwork));
+    }
+    function setPlaying(p: boolean) {
+      playing = p;
+      root!.classList.toggle("is-playing", p);
+      highlight();
+    }
+    function updateProgress(pct: number, position: number) {
+      fillEls.forEach((e) => (e.style.width = pct + "%"));
+      if (curEl) curEl.textContent = fmt(position);
+      const frac = pct / 100;
+      waveBars.forEach((b, i) => {
+        b.style.background =
+          i / waveBars.length <= frac ? "var(--ember)" : "rgba(255,255,255,.28)";
+      });
+    }
+    function highlight() {
+      document.querySelectorAll<HTMLElement>("[data-track]").forEach((el) => {
+        const on = Number(el.dataset.track) === idx;
+        el.classList.toggle("playing", on);
+        const g = el.querySelector("[data-track-glyph]");
+        if (g) g.textContent = on && playing ? "❚❚" : "▶";
+      });
+    }
+    function load(i: number, autoplay: boolean) {
+      idx = (i + tracks.length) % tracks.length;
+      const t = tracks[idx];
+      setMeta(t);
+      updateProgress(0, 0);
+      widget.load(t.widgetUrl, {
+        auto_play: !!autoplay,
+        callback: () =>
+          widget.getDuration((d) => {
+            duration = d;
+            if (durEl) durEl.textContent = fmt(d);
+          }),
+      });
+      highlight();
+    }
+    function openNp(open: boolean) {
+      if (np) np.hidden = !open;
+    }
+
+    widget.bind(SC.Widget.Events.READY, () => {
+      setMeta(tracks[0]);
+      widget.getDuration((d) => {
+        duration = d;
+        if (durEl) durEl.textContent = fmt(d);
+      });
+    });
+    widget.bind(SC.Widget.Events.PLAY, () => setPlaying(true));
+    widget.bind(SC.Widget.Events.PAUSE, () => setPlaying(false));
+    widget.bind(SC.Widget.Events.FINISH, () => load(idx + 1, true));
+    widget.bind(SC.Widget.Events.PLAY_PROGRESS, (e: any) =>
+      updateProgress((e.relativePosition || 0) * 100, e.currentPosition || 0),
+    );
+
+    root.addEventListener("click", (ev) => {
+      const el = (ev.target as HTMLElement).closest<HTMLElement>(
+        "[data-player-toggle],[data-player-next],[data-player-prev],[data-player-open],[data-player-close],[data-player-seek]",
+      );
+      if (!el) return;
+      if (el.matches("[data-player-toggle]")) widget.toggle();
+      else if (el.matches("[data-player-next]")) load(idx + 1, true);
+      else if (el.matches("[data-player-prev]")) load(idx - 1, true);
+      else if (el.matches("[data-player-open]")) openNp(true);
+      else if (el.matches("[data-player-close]")) openNp(false);
+      else if (el.matches("[data-player-seek]")) {
+        const r = el.getBoundingClientRect();
+        const frac = Math.max(0, Math.min(0.999, ((ev as MouseEvent).clientX - r.left) / r.width));
+        if (duration) widget.seekTo(frac * duration);
+      }
+    });
+
+    // Page-level controls (music page album hero + track rows) — delegate on document.
+    document.addEventListener("click", (ev) => {
+      const target = ev.target as HTMLElement;
+      if (target.closest("[data-np-open]")) {
+        ev.preventDefault();
+        openNp(true);
+        return;
+      }
+      const btn = target.closest<HTMLElement>("[data-play-track]");
+      if (!btn) return;
+      ev.preventDefault();
+      const i = Number(btn.dataset.playTrack);
+      if (i === idx) widget.toggle();
+      else load(i, true);
+    });
+
+    (window as any).__scPlayer = { resync: highlight };
+    // Track 0 is already loaded via the iframe src; just sync the UI.
+    setMeta(tracks[0]);
+    highlight();
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    initPlayer();
+    (window as any).__scPlayer?.resync?.();
+  });
+</script>
