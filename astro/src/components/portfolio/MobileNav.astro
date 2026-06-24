@@ -1,0 +1,37 @@
+---
+import Icon from "./Icon.astro";
+import { profile, socials, navItems, isActive } from "../../data/site";
+
+interface Props {
+  pathname: string;
+}
+const { pathname } = Astro.props;
+const github = socials.find((s) => s.name === "github")!;
+---
+
+<div class="mobtopbar">
+  <div class="mobtopbar-id">
+    <img src={profile.avatar} alt={profile.name} />
+    <div class="brand">{profile.name}</div>
+  </div>
+  <div class="mobtopbar-actions">
+    <a href={github.href} target="_blank" rel="noopener" title="GitHub">
+      <Icon name="github" />
+    </a>
+    <button class="theme-toggle btnx" data-theme-toggle title="Toggle theme" aria-label="Toggle theme">
+      <Icon name="sun" class="icon-sun" />
+      <Icon name="moon" class="icon-moon" />
+    </button>
+  </div>
+</div>
+
+<nav class="bottomnav">
+  {
+    navItems.map((item) => (
+      <a class:list={["navlink", { active: isActive(item.href, pathname) }]} href={item.href}>
+        <Icon name={item.icon} />
+        <span>{item.mobileLabel}</span>
+      </a>
+    ))
+  }
+</nav>

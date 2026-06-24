@@ -1,0 +1,94 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { getCollection } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Sidebar from "../components/portfolio/Sidebar.astro";
+import MobileNav from "../components/portfolio/MobileNav.astro";
+import MusicPlayer from "../components/portfolio/MusicPlayer.astro";
+import { resolveTracks, type RawTrack } from "../lib/soundcloud";
+
+import "@fontsource/anton";
+import "@fontsource/space-grotesk/400.css";
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/600.css";
+import "@fontsource/space-grotesk/700.css";
+import "@fontsource/space-mono/400.css";
+import "@fontsource/space-mono/700.css";
+import "../styles/portfolio.css";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: "website" | "article";
+}
+const { title, description, image, type } = Astro.props;
+const pathname = Astro.url.pathname;
+
+// Build the persistent player's track list from the music collection.
+const musicEntries = await getCollection("music");
+const raws: RawTrack[] = musicEntries
+  .filter((e) => e.data.soundCloudUrl)
+  .map((e, i) => ({
+    id: e.id,
+    soundCloudUrl: e.data.soundCloudUrl,
+    order: (e.data as { order?: number }).order ?? i,
+    tag: e.data.tags?.[0],
+    note: e.data.description,
+    title: e.data.title,
+    image: e.data.image,
+    youtubeUrl: e.data.youtubeUrl,
+  }));
+const tracks = await resolveTracks(raws);
+---
+
+<!doctype html>
+<html lang="en" class="theme-dark">
+  <head>
+    <script is:inline>
+      (function () {
+        function apply() {
+          var t = localStorage.getItem("theme") || "dark";
+          var el = document.documentElement;
+          el.classList.remove("theme-dark", "theme-light");
+          el.classList.add("theme-" + t);
+          el.style.colorScheme = t;
+        }
+        apply();
+        document.addEventListener("astro:after-swap", apply);
+      })();
+    </script>
+    <BaseHead title={title} description={description} image={image} type={type} />
+    <ClientRouter />
+  </head>
+  <body>
+    <div class="app">
+      <Sidebar pathname={pathname} />
+      <MobileNav pathname={pathname} />
+      <div class="content">
+        <main>
+          <slot />
+        </main>
+      </div>
+      <MusicPlayer tracks={tracks} />
+    </div>
+
+    <script>
+      // Theme toggle — delegated once, survives view transitions.
+      const w = window as any;
+      if (!w.__themeBound) {
+        w.__themeBound = true;
+        document.addEventListener("click", (e) => {
+          const btn = (e.target as HTMLElement).closest("[data-theme-toggle]");
+          if (!btn) return;
+          const next = (localStorage.getItem("theme") || "dark") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", next);
+          const el = document.documentElement;
+          el.classList.remove("theme-dark", "theme-light");
+          el.classList.add("theme-" + next);
+          el.style.colorScheme = next;
+        });
+      }
+    </script>
+  </body>
+</html>
