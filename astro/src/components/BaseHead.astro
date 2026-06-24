@@ -1,38 +1,66 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
-import "../styles/global.css";
+import { SITE_NAME, SITE_URL, SITE_AUTHOR } from "../config";
+import { socials, profile } from "../data/site";
 
 export interface Props {
   title: string;
   description: string;
   image?: string;
+  type?: "website" | "article";
 }
 
-const { title, description, image = "/luis.webp" } = Astro.props;
+const { title, description, image = "/luis-profile.webp", type = "website" } = Astro.props;
+
+const fullTitle = title.includes(SITE_NAME) ? title : `${title} · ${SITE_NAME}`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE_URL);
+const ogImage = new URL(image, Astro.site ?? SITE_URL);
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: SITE_AUTHOR,
+  url: SITE_URL,
+  image: new URL(profile.avatar, SITE_URL).href,
+  jobTitle: "Full Stack Web Developer",
+  description,
+  sameAs: socials.map((s) => s.href),
+};
 ---
 
-<!-- Global Metadata -->
+<!-- Global metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="shortcut icon" href="/luisfavicon.ico" type="image/x-icon" />
 <meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonical} />
 
-<!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
+<!-- Icons & PWA -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="shortcut icon" href="/luisfavicon.ico" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content="#0a0e08" />
+
+<!-- Primary -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
 <meta name="description" content={description} />
+<meta name="author" content={SITE_AUTHOR} />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={ogImage} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:url" content={canonical} />
+<meta property="twitter:title" content={fullTitle} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={ogImage} />
+
+<!-- Structured data -->
+<script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
