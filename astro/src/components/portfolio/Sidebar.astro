@@ -1,0 +1,52 @@
+---
+import Icon from "./Icon.astro";
+import { profile, socials, navItems, isActive } from "../../data/site";
+
+interface Props {
+  pathname: string;
+}
+const { pathname } = Astro.props;
+---
+
+<aside class="sidebar">
+  <div class="sidebar-head">
+    <div class="sidebar-id">
+      <img class="avatar" src={profile.avatar} alt={profile.name} />
+      <div>
+        <div class="brand">
+          {profile.nameLines.map((l, i) => (
+            <>{i > 0 && <br />}{l}</>
+          ))}
+        </div>
+        <div class="brand-sub">{profile.tagline}</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    {
+      navItems.map((item) => (
+        <a class:list={["navlink", { active: isActive(item.href, pathname) }]} href={item.href}>
+          <Icon name={item.icon} />
+          <span>{item.label}</span>
+        </a>
+      ))
+    }
+  </nav>
+
+  <div class="sidebar-foot">
+    <div class="social">
+      {
+        socials.map((s) => (
+          <a href={s.href} target="_blank" rel="noopener" title={s.label}>
+            <Icon name={s.name} />
+          </a>
+        ))
+      }
+    </div>
+    <button class="theme-toggle btnx" data-theme-toggle title="Toggle theme" aria-label="Toggle theme">
+      <Icon name="sun" class="icon-sun" />
+      <Icon name="moon" class="icon-moon" />
+    </button>
+  </div>
+</aside>

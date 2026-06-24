@@ -1,27 +1,63 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/NavBar/Header.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
-import Home from "../components/Home/Home.astro";
+import PortfolioLayout from "../layouts/PortfolioLayout.astro";
+import { profile } from "../data/site";
+
+const title = "Luis Manzanero — Full Stack Web Developer";
+const description =
+  "Full-stack web & mobile developer from Belize — building meaningful software for a sustainable world. Guitarist, writer, and environmental scientist.";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      main {
-        padding: 0;
-        margin: 0;
-        overflow:hidden;
-        height: 100vh
-      }
-    </style>
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
-    <main>
-      <Home />
-    </main>
-  </body>
-</html>
+<PortfolioLayout title={title} description={description} image="/luis-profile.webp">
+  <div class="page rise">
+    <div class="about-grid">
+      <div>
+        <h1 class="page-title about-title font-display">
+          <span style="white-space:nowrap">Jungle-born, self-taught,</span><br />
+          <span class="accent">amplified.</span>
+        </h1>
+
+        <div class="about-id">
+          <img src={profile.avatar} alt={profile.name} />
+          <div>
+            <div class="brand">{profile.name}</div>
+            <div class="brand-sub" style="color:var(--green)">{profile.tagline}</div>
+          </div>
+        </div>
+
+        <div class="about-prose">
+          <p>
+            I'm Luis Manzanero — an enthusiastic full-stack web &amp; mobile developer from
+            the breathtaking landscapes of <span class="green">Belize</span>. Growing up in
+            the lush jungles instilled a deep appreciation for the environment, which I
+            combine with my passion for technology to build meaningful solutions for a
+            sustainable world.
+          </p>
+          <p>
+            I have a relentless desire to expand my knowledge and apply it to projects that
+            bring me joy and contribute to the betterment of our planet — spanning
+            blockchain, web, and mobile development.
+          </p>
+          <p>
+            Beyond coding I'm a guitarist and writer. I believe in the power of riffs and
+            words to inspire change.
+          </p>
+        </div>
+
+        <div class="tags">
+          <span class="chip">B.Sc. Environmental Science</span>
+          <span class="chip">Self-taught engineer</span>
+          <span class="chip">Guitarist</span>
+        </div>
+      </div>
+
+      <div class="about-aside">
+        <img src="/luis-profile.webp" alt="Luis Manzanero" />
+        <div class="cta-card">
+          <div class="label">// let's build something</div>
+          <p>I'd love to explore ways we can collaborate on a project.</p>
+          <a href={`mailto:${profile.email}`} class="btn-solid btnx">Contact me</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</PortfolioLayout>
