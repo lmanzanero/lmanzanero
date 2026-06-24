@@ -1,6 +1,6 @@
 /* ==========================================================================
    Portfolio design system — ported from Portfolio.dc.html
-   Earthy terminal aesthetic · dark + light themes
+   Earthy aesthetic · dark + light themes
    ========================================================================== */
 
 *,
@@ -18,18 +18,18 @@ body {
 
 /* ---- Theme tokens -------------------------------------------------------- */
 .theme-dark {
-  --bg: #0a0e08;
-  --bg2: #10150c;
-  --surface: #161c10;
-  --surface2: #1e2618;
-  --line: #2b3522;
+  --bg: #2c3144;
+  --bg2: #252a3a;
+  --surface: #343a50;
+  --surface2: #3f475e;
+  --line: #474f68;
   --ink: #ece8da;
-  --ink-dim: #929a82;
+  --ink-dim: #969db4;
   --moss: #3c5527;
   --green: #9ccb5b;
   --green-dim: #6f9a45;
-  --ember: #d2683a;
-  --ember-bright: #f0814a;
+  --ember: #6f9a45;
+  --ember-bright: #9ccb5b;
   --teal: #56a087;
   --shadow: rgba(0, 0, 0, 0.5);
 }
@@ -45,8 +45,8 @@ body {
   --moss: #aebd92;
   --green: #4f7d27;
   --green-dim: #5f8a34;
-  --ember: #bf4f1f;
-  --ember-bright: #d2683a;
+  --ember: #4f7d27;
+  --ember-bright: #5f8a34;
   --teal: #2f6b59;
   --shadow: rgba(60, 70, 40, 0.18);
 }
@@ -136,11 +136,17 @@ a {
   padding: clamp(26px, 5vw, 56px) clamp(24px, 5vw, 64px) 70px;
 }
 
-.prompt {
+.back-link {
   font-family: "Space Mono", monospace;
   font-size: 13px;
-  color: var(--green);
+  color: var(--ink-dim);
+  text-decoration: none;
+  display: inline-block;
   margin-bottom: 28px;
+  transition: color 0.18s;
+}
+.back-link:hover {
+  color: var(--teal);
 }
 
 .page-title {
@@ -157,19 +163,12 @@ a {
   padding: 24px 20px 18px;
   border-bottom: 1px solid var(--line);
 }
-.sidebar-tag {
-  font-family: "Space Mono", monospace;
-  font-size: 11px;
-  color: var(--green);
-  letter-spacing: 0.5px;
-}
 .sidebar-id {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 16px;
-  margin-top: 18px;
 }
 .avatar {
   width: 104px;
@@ -517,7 +516,7 @@ a {
 .np-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 14, 8, 0.55), rgba(10, 14, 8, 0.9));
+  background: linear-gradient(180deg, rgba(20, 23, 34, 0.55), rgba(20, 23, 34, 0.9));
 }
 .np-top {
   position: relative;
@@ -623,7 +622,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 30px rgba(210, 104, 58, 0.5);
+  box-shadow: 0 12px 30px rgba(111, 154, 69, 0.5);
   font-size: 22px;
 }
 

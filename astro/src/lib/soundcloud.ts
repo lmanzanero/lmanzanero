@@ -65,7 +65,7 @@ async function resolvePermalink(url: string): Promise<string> {
 function buildWidgetUrl(permalink: string): string {
   const params = new URLSearchParams({
     url: permalink,
-    color: "d2683a",
+    color: "6f9a45",
     auto_play: "false",
     hide_related: "true",
     show_comments: "false",

@@ -27,9 +27,7 @@ const formattedDate = date
 <PortfolioLayout title={title} description={description} image={image} type="article">
   <div class="page rise">
     <article class="article">
-      <a class="prompt" href="/music" style="text-decoration:none;display:inline-block">
-        $ cd ~/stories &amp;&amp; cat
-      </a>
+      <a class="back-link" href="/blog">← Field notes</a>
       {image && <img class="article-hero" src={image} alt={title} />}
       <div class="post-tag">
         {tags?.[0] && <>#{tags[0]}</>}{formattedDate && <> · {formattedDate}</>}
