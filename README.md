@@ -17,7 +17,7 @@ const lmanzanero = {
 
 ### Find me online 🌎
 
-- [🌐 luismanzanero.com](https://luismanzanero.dev/)
+- [🌐 luismanzanero.dev](https://luismanzanero.dev/)
 - [🎓 Resume](https://luismanzanero.dev/resume)
 - [‍🚀 Projects](https://luismanzanero.dev/projects)
 - [📝 Blog](https://luismanzanero.dev/blog)
